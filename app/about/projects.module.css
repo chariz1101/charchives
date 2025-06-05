@@ -1,0 +1,28 @@
+/* app/projects/projects.module.css */
+
+.projectsPageContainer {
+  background-color: var(--bg-primary); /* Use a CSS variable if defined, otherwise #100F29 */
+  background-image: url('/about-me-bg.png'); /* The *sole* background image */
+  background-size: 100%;
+  color: var(--text-primary); /* Use a CSS variable if defined, otherwise #E0E0E0 */
+}
+
+.infoContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 11.5rem;
+  padding-top: 9rem;
+}
+
+.aboutMePicture{
+  width: 100%;
+  height: auto;
+  border-radius: 50%; /* Makes the image circular */
+  scale: 1.05;
+}
+.aboutMeBG{
+  width: 100%;
+  height: auto;
+  scale: 1.9;
+}
