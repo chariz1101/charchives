@@ -1,0 +1,219 @@
+/* Common styles for all cards */
+.projectCardWrapper {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #2a2a2a; /* Slightly lighter dark */
+  position: relative;
+}
+
+.projectCardWrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 20px var(--primary-green);
+}
+
+.projectImage {
+  width: 100%;
+  height: 200px; /* Fixed height for consistency */
+  object-fit: cover;
+  display: block;
+}
+
+.projectTitle {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-green);
+}
+
+.projectDescription {
+  font-size: 0.9rem;
+  color: var(--light-gray);
+  margin-bottom: 1rem;
+}
+
+.projectLinks {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto; /* Push links to bottom for flex containers */
+  justify-content: center;
+}
+
+.liveLink, .githubLink {
+  background-color: var(--primary-green);
+  color: var(--dark-bg);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.liveLink:hover, .githubLink:hover {
+  background-color: #4aff24; /* Lighter green on hover */
+  color: var(--dark-bg);
+}
+
+/* --- Default Card Style --- */
+.defaultCard {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Ensure card fills wrapper height */
+  padding-bottom: 1rem; /* Space for links */
+  text-align: center;
+}
+
+.defaultCard .projectTitle { margin-top: 1rem; }
+
+/* --- Compact Card Style --- */
+.compactCard {
+  padding: 1rem;
+  text-align: left;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.compactTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+    border-left: 3px solid var(--primary-green);
+    padding-left: 0.5rem;
+}
+
+.compactDescription {
+    font-size: 0.8rem;
+    color: var(--light-gray);
+    margin-top: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    animation: fadeIn 0.3s forwards;
+}
+
+/* --- Detailed Card Style --- */
+.detailedCard {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.detailedCard .projectImage {
+    height: 250px; /* Taller image for detailed */
+}
+
+.detailedCard .projectTitle,
+.detailedCard .projectDescription {
+    padding: 0 1rem;
+}
+
+/* --- Hover Reveal Card Style --- */
+.hoverRevealCard {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex; /* For centering overlay content */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hoverRevealCard .projectImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: filter 0.3s ease;
+}
+
+.hoverRevealCard .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hoverRevealCard:hover .overlay {
+  opacity: 1;
+}
+
+.hoverRevealCard:hover .projectImage {
+  filter: blur(5px);
+}
+
+.hoverRevealCard .projectLinks {
+    margin-top: 1rem;
+}
+
+/* --- Floating Grid Card (for a different layout approach) --- */
+.floatingGridCard {
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 1px solid rgba(57, 255, 20, 0.3); /* subtle green border */
+    position: relative;
+}
+
+.floatingGridCard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(57, 255, 20, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.floatingGridCard:hover::before {
+    opacity: 1;
+}
+
+.floatingGridCard > * {
+    position: relative; /* Ensure content stays above pseudo-element */
+    z-index: 1;
+}
+
+.floatingGridCard .projectTitle {
+    font-size: 1.4rem;
+    text-align: left;
+    margin-bottom: 0.5rem;
+}
+
+.floatingGridCard .projectDescription {
+    font-size: 0.95rem;
+    text-align: left;
+}
+
+.floatingGridCard .projectLinks {
+    justify-content: flex-start; /* Align links to left */
+    margin-top: 1.5rem;
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,58 @@
+/* app/projects/projects.module.css */
+
+.projectsPageContainer {
+  background-color: var(--bg-primary); /* Use a CSS variable if defined, otherwise #100F29 */
+  color: var(--text-primary); /* Use a CSS variable if defined, otherwise #E0E0E0 */
+}
+
+.projectsContent {
+  padding: 2rem;
+  text-align: center;
+}
+
+.projectsContent h1 {
+  font-size: 3rem; /* Example size, adjust as needed */
+  color: var(--accent-vibrant-teal); /* Example color */
+  margin-bottom: 1rem;
+}
+
+.projectsContent p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 1rem auto; /* Center paragraphs and add bottom margin */
+}
+
+.backButton {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--accent-vibrant-teal); /* Use a CSS variable if defined, otherwise #00E6CC */
+  color: var(--bg-primary); /* Use a CSS variable if defined, otherwise #100F29 */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 2rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.backButton:hover {
+  filter: brightness(1.15); /* Slightly brighter on hover */
+  transform: translateY(-2px); /* Slight lift */
+}
+
+/* Add any responsive adjustments for this page here */
+@media (max-width: 768px) {
+  .projectsContent {
+    padding: 1rem;
+  }
+  .projectsContent h1 {
+    font-size: 2.5rem;
+  }
+  .projectsContent p {
+    font-size: 1rem;
+  }
+  .backButton {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}

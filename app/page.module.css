@@ -1,168 +1,111 @@
-.page {
-  --gray-rgb: 0, 0, 0;
-  --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
-  --gray-alpha-100: rgba(var(--gray-rgb), 0.05);
+/* app/page.module.css */
 
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
-  font-family: var(--font-geist-sans);
+.landingContainer {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--bg-primary); /* Base color for background */
+  background-image: url('/bg-cubes.png'); /* The *sole* background image */
+  background-size: 100%; /* Ensure it covers the entire container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat */
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  .page {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
-}
-
-.main {
+/* Content Wrapper to keep elements centered above background */
+.contentWrapper {
+  margin-top: 8rem;
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  grid-row-start: 2;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
 }
 
-.main ol {
-  font-family: var(--font-geist-mono);
-  padding-left: 0;
+/* Brand Container - now holds the image and the text */
+.brandContainer {
+  text-align: center;
+  position: relative; /* Crucial for absolute positioning of the text */
+  display: flex; /* Use flex to help align the image and text */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+/* Style for the charchives-rectangle.png image */
+.charchivesBrandImage {
+  display: block; /* Ensures it behaves like a block element */
+  object-fit: contain; /* Ensure the entire image is visible if aspect ratio is off */
+  /* REMOVED: box-shadow from here */
+  transition: transform 0.3s ease; /* Keep transition for hover effect */
+}
+
+/* Adjustments for brandName to overlay the image */
+.brandName {
+  font-family: var(--font-poppins);
+  font-size: 4rem;
+  font-weight: 400; /* Thinner font weight */
+  color: var(--accent-vibrant-teal);
   margin: 0;
-  font-size: 14px;
-  line-height: 24px;
-  letter-spacing: -0.01em;
-  list-style-position: inside;
+  text-shadow: 0 0 10px rgba(0, 230, 204, 0.5);
+  position: absolute; /* Position over the image */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust for text's own size */
+  z-index: 2; /* Ensure text is above the image */
 }
 
-.main li:not(:last-of-type) {
-  margin-bottom: 8px;
+/* Hover effects for the charchives image/text combination */
+.brandContainer:hover .charchivesBrandImage {
+    transform: translateY(-5px);
+    /* REMOVED: box-shadow from here */
 }
 
-.main code {
-  font-family: inherit;
-  background: var(--gray-alpha-100);
-  padding: 2px 4px;
-  border-radius: 4px;
-  font-weight: 600;
-}
 
-.ctas {
+/* Main Navigation */
+.mainNav {
   display: flex;
-  gap: 16px;
+  gap: 1.8rem;
+  margin-top: 1.5rem;
 }
 
-.ctas a {
-  appearance: none;
-  border-radius: 128px;
-  height: 48px;
-  padding: 0 20px;
-  border: none;
-  border: 1px solid transparent;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s;
-  cursor: pointer;
+.navItem {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
+  transition: transform 0.3s ease;
 }
 
-a.primary {
-  background: var(--foreground);
-  color: var(--background);
-  gap: 8px;
+.navItem:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
 }
 
-a.secondary {
-  border-color: var(--gray-alpha-200);
-  min-width: 158px;
+/* Apply hover effects directly to the Image within the Link */
+.navItem:hover > img { /* Target the Image (img tag) directly inside navItem on hover */
+  transform: scale(1.05); /* Apply scale directly to the image */
+  filter: brightness(1.1); /* Apply brightness directly to the image */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Ensure smooth transition on image */
 }
 
-.footer {
-  grid-row-start: 3;
-  display: flex;
-  gap: 24px;
-}
 
-.footer a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.footer img {
-  flex-shrink: 0;
-}
-
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .brandName {
+    font-size: 2.5rem;
   }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
+  .charchivesBrandImage {
+    width: 300px; /* Adjust for smaller screens */
+    height: 75px; /* Adjust for smaller screens */
   }
-
-  .footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-}
-
-@media (max-width: 600px) {
-  .page {
-    padding: 32px;
-    padding-bottom: 80px;
-  }
-
-  .main {
-    align-items: center;
-  }
-
-  .main ol {
-    text-align: center;
-  }
-
-  .ctas {
+  .mainNav {
     flex-direction: column;
+    gap: 2rem;
   }
-
-  .ctas a {
-    font-size: 14px;
-    height: 40px;
-    padding: 0 16px;
-  }
-
-  a.secondary {
-    min-width: auto;
-  }
-
-  .footer {
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
+  .navItem > img { /* Target Image inside navItem */
+    width: 90px;
+    height: 90px;
   }
 }
