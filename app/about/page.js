@@ -83,13 +83,13 @@ export default function AboutMePage() {
         <div className={styles.awardsSection}>
           <h3 className={styles.sectionTitle}>Awards & Recognition</h3>
           <ul className={styles.awardsList}>
-            <li>1st Place, Short Film Documentary Contest (2022)</li>
-            <li>2nd Place, Math Quiz Bee - Battle of the Brains (2022)</li>
-            <li>Most Promising Broadcaster, PM NegoTalk Youth Talk (2021)</li>
-            <li>Best UI Production, Panitikang Journalism Summit (2021)</li>
-            <li>IWAG Awardee, Philippine Information Agency (2022)</li>
-            <li>Ambassador for Leadership & Youth Empowerment, Pathways (2022)</li>
-          </ul>
+           <li>🏆 1st Place, Short Film Documentary Contest (2022)</li>
+            <li>🥈 2nd Place, Math Quiz Bee - Battle of the Brains (2022)</li>
+            <li>🎙️ Most Promising Broadcaster, PM NegoTalk Youth Talk (2021)</li>
+            <li>🎨 Best UI Production, Panitikang Journalism Summit (2021)</li>
+            <li>🏅 IWAG Awardee, Philippine Information Agency (2022)</li>
+            <li>🤝 Ambassador for Leadership & Youth Empowerment, Pathways (2022)</li>
+         </ul>
         </div>
       </div>
     </div>
