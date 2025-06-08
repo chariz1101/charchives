@@ -4,7 +4,8 @@
   --text-primary: #E0E0E0;
   --accent-vibrant-teal: #00E6CC;
   --accent-electric-lavender: #7B00FF;
-
+  --accent-light-purple: #A77BFF;
+  --accent-royal-blue: #007BFF;
   --font-poppins: 'Poppins', sans-serif;
 }
 
@@ -21,4 +22,11 @@ html, body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+h2{
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
 }

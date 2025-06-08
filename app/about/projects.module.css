@@ -1,27 +1,160 @@
-/* app/projects/projects.module.css */
-
 .projectsPageContainer {
-  background-color: var(--bg-primary); /* Use a CSS variable if defined, otherwise #100F29 */
-  background-image: url('/about-me-bg.png'); /* The *sole* background image */
+  background-color: var(--bg-primary);
+  background-image: url('/about-me-bg.png');
   background-size: 100%;
-  color: var(--text-primary); /* Use a CSS variable if defined, otherwise #E0E0E0 */
+  color: var(--text-primary);
+  min-height: 220vh; /* Ensure it takes full height */
 }
 
-.infoContainer{
+.infoContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 185px;
-  padding-top: 145px;
+  margin-left: 11rem;
+  padding-top: 9.0625rem;
+  gap: 2rem;
 }
 
-.aboutMePicture{
+.aboutMePicture {
   width: 100%;
   height: auto;
+  max-width: 25rem;
+  flex-shrink: 0;
   scale: 1.05;
 }
-.aboutMeBG{
-  width: 100%;
-  height: auto;
+
+.aboutMeBG {
+  width: 100%; /* Allows image to fill container width */
+  height: auto; /* Maintains aspect ratio */
+  max-width: 60rem; /* Adjust this value if you want the image to be larger or smaller */
+  flex-grow: 1; /* Allow it to grow and take up available space in the flex container */
+  position: relative; /* Keep this for the text overlay */
   scale: 1.9;
+  margin-left: 21rem;
+}
+
+.aboutMeTextOverlay {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-primary);
+  z-index: 2;
+  width: 100%;
+  padding: 0 2rem;
+  box-sizing: border-box;
+  margin-left: 23rem;
+}
+
+.aboutMeTextOverlay h2{
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.aboutMeTextOverlay p{
+  font-size: .85rem;
+  padding-right: 12.5rem;
+  line-height: 1.25rem;
+}
+
+.highlightName {
+  color: var(--accent-vibrant-teal);
+}
+
+.highlightPurple {
+  color: var(--accent-light-purple);
+}
+
+.highlightBlue {
+  color: var(--accent-royal-blue);
+}
+
+/* Styles for the new sections */
+.sectionsContainer {
+  display: flex;
+  justify-content: space-around;
+  margin: 8rem 11rem 4rem; /* Adjust margin as needed */
+  gap: 3rem;
+}
+
+.skillsSection,
+.leadershipSection,
+.awardsSection {
+  padding: 3rem;
+  flex: 1; /* Allows sections to take equal width */
+  min-width: 0; /* Ensures content doesn't overflow */
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.skillCategory,
+.activitiesList,
+.awardsList {
+  list-style-type: circle; /* Apply circle to the main lists */
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.skillCategory li,
+.activitiesList li,
+.awardsList li {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+
+.skillCategoryTitle {
+  margin-bottom: 0.5rem;
+  margin-top: 1rem; /* Add some space above the title */
+  font-size: 1.3rem; /* Adjust size as needed */
+  margin-left: -2rem;
+}
+
+
+/* Add any responsive adjustments for this page here */
+@media (max-width: 768px) {
+  .infoContainer {
+    flex-direction: column;
+    margin-left: 0;
+    padding-top: 4rem;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    max-width: 100%;
+  }
+  .aboutMePicture,
+  .aboutMeBG {
+    max-width: 90%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    /* scale: 1; - Remove this media query specific scale if you removed the main one */
+  }
+  .aboutMeTextOverlay {
+    font-size: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .sectionsContainer {
+    flex-direction: column;
+    margin: 2rem 1rem; /* Adjust margin for mobile */
+    gap: 1.5rem;
+  }
+
+  .skillsSection,
+  .leadershipSection,
+  .awardsSection {
+    padding: 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 1rem;
+  }
+
+  .skillCategory li,
+  .activitiesList li,
+  .awardsList li {
+    font-size: 0.8rem;
+  }
 }
