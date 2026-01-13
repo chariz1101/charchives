@@ -3,22 +3,23 @@
   background-image: url('/about-me-bg.png');
   background-size: 100%;
   color: var(--text-primary);
-  min-height: 220vh; /* Ensure it takes full height */
+  min-height: 110rem; /* Ensure it takes full height */
 }
 
 .infoContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 11rem;
-  padding-top: 9.0625rem;
-  gap: 2rem;
+  /* margin-left: 11rem;
+  padding-top: 9.0625rem; */
+  margin-left: 10vw;
+  padding-top: 20vh;
+  gap: 1vw;
 }
 
 .aboutMePicture {
   width: 100%;
   height: auto;
-  max-width: 25rem;
   flex-shrink: 0;
   scale: 1.05;
 }
@@ -26,11 +27,10 @@
 .aboutMeBG {
   width: 100%; /* Allows image to fill container width */
   height: auto; /* Maintains aspect ratio */
-  max-width: 60rem; /* Adjust this value if you want the image to be larger or smaller */
   flex-grow: 1; /* Allow it to grow and take up available space in the flex container */
   position: relative; /* Keep this for the text overlay */
   scale: 1.9;
-  margin-left: 21rem;
+  margin-left: -100vh;
 }
 
 .aboutMeTextOverlay {
