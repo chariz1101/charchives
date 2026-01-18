@@ -1,6 +1,6 @@
 ### Chariz's Portfolio
 
-Not yet official. Work in progress.
+Not yet official. Work in progress. Needs more dynamic components.
 
 ## Getting Started
 
