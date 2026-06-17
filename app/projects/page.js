@@ -16,16 +16,16 @@ const projectsData = [
     technologies: ["Python", "Figma", "Dart", "Flutter"],
     websiteLink: "https://example.com/movie-app", // Replace with actual link
   },
-  {
-    id: 2,
-    title: "Portfolio Website Design",
-    description: "Designed and developed a modern, responsive portfolio website to showcase various projects and skills. The site features a clean user interface, interactive elements, and a focus on visual presentation to highlight creative and technical abilities. Optimized for performance and accessibility across all devices.",
-    imageUrl: "/Polygon 1.png", // <--- IMPORTANT: Add another image here
-    imageAlt: "Portfolio Website Screenshot",
-    technologies: ["Next.js", "React", "CSS Modules", "Vercel"],
-    websiteLink: "https://example.com/portfolio", // Replace with actual link
-  },
-  // Add more project objects here as needed
+  // {
+  //   id: 2,
+  //   title: "Portfolio Website Design",
+  //   description: "Designed and developed a modern, responsive portfolio website to showcase various projects and skills. The site features a clean user interface, interactive elements, and a focus on visual presentation to highlight creative and technical abilities. Optimized for performance and accessibility across all devices.",
+  //   imageUrl: "/Polygon 1.png", // <--- IMPORTANT: Add another image here
+  //   imageAlt: "Portfolio Website Screenshot",
+  //   technologies: ["Next.js", "React", "CSS Modules", "Vercel"],
+  //   websiteLink: "https://example.com/portfolio", // Replace with actual link
+  // },
+  // // Add more project objects here as needed
 ];
 
 
