@@ -1,5 +1,5 @@
-import { Poppins } from 'next/font/google';
 import './globals.css';
+import { Poppins } from 'next/font/google';
 
 const poppins = Poppins({
   // Added 500 (Medium) for better typography options in Tailwind
