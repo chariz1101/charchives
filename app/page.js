@@ -40,7 +40,7 @@ export default function PortfolioPage() {
             Chariz Dianne Falco
           </h1>
           <p className="text-zinc-600 font-medium mb-6 text-lg">
-            Software Developer & AI Specialist · 🇵🇭 Iloilo, Philippines
+            Software Developer & AI Specialist · 🇵🇭 Roxas City, Philippines
           </p>
           <div className="flex gap-6 text-sm font-semibold">
             <a href="https://github.com" target="_blank" rel="noreferrer" className="text-zinc-500 hover:text-zinc-900 underline decoration-zinc-300 underline-offset-4 transition-colors">
