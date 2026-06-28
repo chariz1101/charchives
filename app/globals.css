@@ -1,17 +1,20 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
 
-@layer base {
-  :root {
-    --font-poppins: 'Poppins', sans-serif;
-  }
+* { box-sizing: border-box; }
 
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    /* Ensures the custom font is the default for the whole document */
-    font-family: var(--font-poppins); 
-  }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif-display {
+  font-family: 'Poppins', sans-serif;
+}
+
+::selection {
+  background: #FDE68A;
+  color: #18181b;
 }
