@@ -13,6 +13,7 @@ const projects = [
     tag: "Thesis",
     desc: "An application utilizing audio and video inputs for real-time transcription, displaying directly to augmented reality glasses.",
     stack: ["Flutter", "Python", "Flask"],
+    link: "",
   },
   {
     emoji: "🌾",
@@ -20,13 +21,15 @@ const projects = [
     tag: null,
     desc: "A multi-tenant farm management platform featuring timesheet tracking, task management, inventory, accounting, and role-based access control.",
     stack: ["Next.js", "TailwindCSS", "Node.js", "PostgreSQL"],
+    link: "",
   },
   {
-    emoji: "🏫",
+    emoji: "📍",
     name: "Tuon.ILO",
     tag: null,
     desc: "A community-driven civic technology platform designed to help students, freelancers, and remote workers discover, filter, and review the best study spaces and cafes in Iloilo City",
     stack: ["Next.js", "TailwindCSS", "Mapbox GL JS", "PostgreSQL", "Zod"],
+    link: "",
   },
   {
     emoji: "🎮",
@@ -34,6 +37,7 @@ const projects = [
     tag: null,
     desc: "An educational game conceptualized in collaboration with PLDT/Smart, featuring interactive Hiligaynon-based sub-games.",
     stack: ["Unity", "C#"],
+    link: "",
   },
 ];
 
@@ -126,43 +130,53 @@ export default function PortfolioPage() {
         </motion.section>
 
         {/* Projects */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={fadeUp}
-          id="projects"
-          className="mb-20 scroll-mt-32"
-        >
-          <h2 className="font-serif-display text-[1.4rem] font-bold text-zinc-900 mb-9">
-            Projects
-          </h2>
-
-          <div className="flex flex-col gap-9">
-            {projects.map((p) => (
-              <div
-                key={p.name}
-                className="group relative pl-5 border-l-2 border-zinc-200 group-hover:border-amber-400 hover:border-amber-400 transition-colors duration-300"
-              >
-                <h3 className="text-[15px] font-semibold text-zinc-900 flex items-center gap-2.5 mb-2">
-                  <span className="text-base leading-none">{p.emoji}</span>
-                  {p.name}
-                  {p.tag && (
-                    <span className="text-[11px] font-medium px-2 py-0.5 bg-amber-50 text-amber-700 rounded-full border border-amber-100">
-                      {p.tag}
-                    </span>
-                  )}
-                </h3>
-                <p className="text-zinc-500 text-[14.5px] leading-relaxed mb-3">
-                  {p.desc}
-                </p>
-                <p className="text-[12px] font-mono text-zinc-400 tracking-tight">
-                  {p.stack.join(" · ")}
-                </p>
-              </div>
-            ))}
-          </div>
-        </motion.section>
+<motion.section
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: "-80px" }}
+  variants={fadeUp}
+  id="projects"
+  className="mb-20 scroll-mt-32"
+>
+  <h2 className="font-serif-display text-[1.4rem] font-bold text-zinc-900 mb-9">
+    Projects
+  </h2>
+  <div className="flex flex-col gap-9">
+    {projects.map((p) => (
+      <div
+        key={p.name}
+        className="group relative pl-5 border-l-2 border-zinc-200 hover:border-amber-400 transition-colors duration-300"
+      >
+        <h3 className="text-[15px] font-semibold text-zinc-900 flex items-center gap-2.5 mb-2">
+          <span className="text-base leading-none">{p.emoji}</span>
+          {p.link ? (
+            <a
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-amber-700 underline decoration-zinc-300 hover:decoration-amber-400 underline-offset-4 transition-colors duration-200"
+            >
+              {p.name}
+            </a>
+          ) : (
+            p.name
+          )}
+          {p.tag && (
+            <span className="text-[11px] font-medium px-2 py-0.5 bg-amber-50 text-amber-700 rounded-full border border-amber-100">
+              {p.tag}
+            </span>
+          )}
+        </h3>
+        <p className="text-zinc-500 text-[14.5px] leading-relaxed mb-3">
+          {p.desc}
+        </p>
+        <p className="text-[12px] font-mono text-zinc-400 tracking-tight">
+          {p.stack.join(" · ")}
+        </p>
+      </div>
+    ))}
+  </div>
+</motion.section>
 
         {/* Skills */}
         <motion.section
