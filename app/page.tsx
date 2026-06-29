@@ -77,7 +77,7 @@ export default function PortfolioPage() {
         {/* Header */}
         <motion.header initial="hidden" animate="visible" variants={fadeUp} className="mb-20">
           <p className="text-[13px] font-medium text-amber-700/80 tracking-wide uppercase mb-3">
-            Iloilo, Philippines
+            Roxas City, Philippines
           </p>
           <h1 className="font-serif-display text-[2.6rem] leading-[1.1] font-bold tracking-tight text-zinc-900 mb-3">
             Chariz Dianne Falco
