@@ -29,7 +29,7 @@ const projects = [
     tag: null,
     desc: "A community-driven civic technology platform designed to help students, freelancers, and remote workers discover, filter, and review the best study spaces and cafes in Iloilo City",
     stack: ["Next.js", "TailwindCSS", "Mapbox GL JS", "PostgreSQL", "Zod"],
-    link: "",
+    link: "https://tuon-ilo.vercel.app/",
   },
   {
     emoji: "🎮",
