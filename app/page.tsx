@@ -23,10 +23,10 @@ const projects = [
   },
   {
     emoji: "🏫",
-    name: "Cybsync Attendance System",
+    name: "Tuon.ILO",
     tag: null,
-    desc: "A comprehensive university-wide attendance system equipped with administrative, council, and student dashboards for transparent tracking.",
-    stack: ["React.js", "Node.js", "Express", "MongoDB"],
+    desc: "A community-driven civic technology platform designed to help students, freelancers, and remote workers discover, filter, and review the best study spaces and cafes in Iloilo City",
+    stack: ["Next.js", "TailwindCSS", "Mapbox GL JS", "PostgreSQL", "Zod"],
   },
   {
     emoji: "🎮",
