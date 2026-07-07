@@ -3,6 +3,14 @@ import { motion } from "framer-motion";
 import { LayoutTextFlipDemo } from "@/components/layoutTextFlip";
 import { GitHub, File } from "@deemlol/next-icons";
 import { Button } from "@/components/ui/button";
+import { FloatingDock } from "@/components/ui/floating-dock";
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconMail,
+  IconPhone,
+  IconFileText,
+} from "@tabler/icons-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -44,6 +52,34 @@ const projects = [
   },
 ];
 
+const dockLinks = [
+  {
+    title: "GitHub",
+    icon: <IconBrandGithub className="h-full w-full text-neutral-500" />,
+    href: "https://github.com/chariz1101",
+  },
+  {
+    title: "LinkedIn",
+    icon: <IconBrandLinkedin className="h-full w-full text-neutral-500" />,
+    href: "https://www.linkedin.com/in/chariz-dianne-falco-12350626a/",
+  },
+  {
+    title: "Email",
+    icon: <IconMail className="h-full w-full text-neutral-500" />,
+    href: "mailto:charizdiannefalco@gmail.com",
+  },
+  {
+    title: "Phone",
+    icon: <IconPhone className="h-full w-full text-neutral-500" />,
+    href: "tel:09303443297",
+  },
+  {
+    title: "Resume",
+    icon: <IconFileText className="h-full w-full text-neutral-500" />,
+    href: "https://drive.google.com/file/d/1oW_f128pD_RvnnuahRi97bQ50bBfFN_0/view?usp=sharing",
+  },
+];
+
 export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-[#FDFBF8] pb-24">
@@ -56,7 +92,6 @@ export default function PortfolioPage() {
           variants={fadeUp}
           className="flex flex-col sm:flex-row items-start gap-16 mb-20"
         >
-
           {/* LEFT */}
           <div className="flex flex-col items-center sm:items-start gap-4 flex-shrink-0 w-52">
             <div className="w-60 h-60 rounded-2xl overflow-hidden border">
@@ -79,12 +114,11 @@ export default function PortfolioPage() {
                 </Button>
                 <Button variant="outline">
                   <File data-icon="inline-end" />
-                  <a href="https://github.com/chariz1101">Resume</a>
+                  <a href="/resume.pdf">Resume</a>
                 </Button>
               </div>
             </div>
           </div>
-
         </motion.header>
       </div>
 
@@ -111,7 +145,6 @@ export default function PortfolioPage() {
                 key={p.name}
                 className="group flex flex-col gap-3 p-5 rounded-2xl border border-zinc-200 bg-white hover:border-zinc-300 hover:shadow-sm transition-all duration-200"
               >
-                {/* Top row */}
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-2">
                     <span className="text-xl">{p.emoji}</span>
@@ -136,13 +169,9 @@ export default function PortfolioPage() {
                     </span>
                   )}
                 </div>
-
-                {/* Description */}
                 <p className="text-[13.5px] text-zinc-500 leading-relaxed flex-1">
                   {p.desc}
                 </p>
-
-                {/* Stack */}
                 <div className="flex flex-wrap gap-1.5 mt-auto">
                   {p.stack.map((t) => (
                     <span
@@ -155,6 +184,29 @@ export default function PortfolioPage() {
                 </div>
               </div>
             ))}
+          </div>
+        </motion.section>
+      </div>
+
+      {/* Contact */}
+      <div className="mx-auto max-w-[1000px] px-6">
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-80px" }}
+          variants={fadeUp}
+          id="contact"
+          className="scroll-mt-32"
+        >
+          <div className="flex items-center gap-4 mb-8">
+            <h2 className="text-[1.75rem] font-bold text-zinc-900 whitespace-nowrap">
+              Contact Me
+            </h2>
+            <div className="flex-1 h-px bg-zinc-200" />
+          </div>
+
+          <div className="flex items-center justify-center py-8">
+            <FloatingDock items={dockLinks} />
           </div>
         </motion.section>
       </div>
