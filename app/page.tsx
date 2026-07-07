@@ -172,7 +172,7 @@ export default function PortfolioPage() {
                   {p.stack.map((t) => (
                     <span
                       key={t}
-                      className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-100"
+                      className="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-100"
                     >
                       {t}
                     </span>
