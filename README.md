@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# charchives — Chariz Dianne Falco's Portfolio
+
+A minimal, clean portfolio built with Next.js, Tailwind CSS, and Framer Motion.
+
+## Tech Stack
+
+- **Framework** — Next.js 15 (App Router)
+- **Styling** — Tailwind CSS v4
+- **Animations** — Framer Motion
+- **UI Components** — shadcn/ui, Aceternity UI (FloatingDock, LayoutTextFlip)
+- **Icons** — Tabler Icons, @deemlol/next-icons
+- **Font** — Poppins (Google Fonts)
+
+## Features
+
+- Animated hero with a rotating role flip text
+- Featured projects grid with live links and tech stack tags
+- Floating dock contact section (GitHub, LinkedIn, Email, Phone, Resume)
+- Smooth scroll fade-up animations
+- Fully responsive
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+app/
+  page.tsx          # Main portfolio page
+  globals.css       # Global styles and Poppins font
+components/
+  layoutTextFlip.tsx        # Rotating role text component
+  ui/
+    floating-dock.tsx       # Aceternity FloatingDock
+    layout-text-flip.tsx    # Aceternity LayoutTextFlip
+    button.tsx              # shadcn Button
+public/
+  mine.jpg          # Profile photo
+  resume.pdf        # Resume (optional, or link to Google Drive)
+```
 
-## Learn More
+## Customization
 
-To learn more about Next.js, take a look at the following resources:
+- **Projects** — Edit the `projects` array in `app/page.tsx`
+- **Dock links** — Edit the `dockLinks` array in `app/page.tsx`
+- **Roles** — Edit the `words` array in `components/layoutTextFlip.tsx`
+- **Photo** — Replace `public/mine.jpg` with your own image
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Deploy instantly on [Vercel](https://vercel.com):
 
-## Deploy on Vercel
+```bash
+npm run build
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Or connect your GitHub repo to Vercel for automatic deployments on every push.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Author
+
+**Chariz Dianne Falco**
+BS Computer Science — Artificial Intelligence, Magna Cum Laude
+West Visayas State University, Class of 2026
+
+- GitHub: [@chariz1101](https://github.com/chariz1101)
+- LinkedIn: [chariz-dianne-falco](https://www.linkedin.com/in/chariz-dianne-falco-12350626a/)
+- Email: charizdiannefalco@gmail.com
