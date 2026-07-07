@@ -99,7 +99,7 @@ export default function PortfolioPage() {
           className="mb-20 scroll-mt-32"
         >
           <div className="flex items-center gap-4 mb-8">
-            <h2 className="text-[1.1rem] font-bold text-zinc-900 whitespace-nowrap">
+            <h2 className="text-[1.75rem] font-bold text-zinc-900 whitespace-nowrap">
               Featured Projects
             </h2>
             <div className="flex-1 h-px bg-zinc-200" />
