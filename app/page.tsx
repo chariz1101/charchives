@@ -55,27 +55,27 @@ const projects = [
 const dockLinks = [
   {
     title: "GitHub",
-    icon: <IconBrandGithub className="h-full w-full text-neutral-500" />,
+    icon: <IconBrandGithub className="h-full w-full" />,
     href: "https://github.com/chariz1101",
   },
   {
     title: "LinkedIn",
-    icon: <IconBrandLinkedin className="h-full w-full text-neutral-500" />,
+    icon: <IconBrandLinkedin className="h-full w-full" />,
     href: "https://www.linkedin.com/in/chariz-dianne-falco-12350626a/",
   },
   {
     title: "Email",
-    icon: <IconMail className="h-full w-full text-neutral-500" />,
+    icon: <IconMail className="h-full w-full" />,
     href: "mailto:charizdiannefalco@gmail.com",
   },
   {
     title: "Phone",
-    icon: <IconPhone className="h-full w-full text-neutral-500" />,
+    icon: <IconPhone className="h-full w-full" />,
     href: "tel:09303443297",
   },
   {
     title: "Resume",
-    icon: <IconFileText className="h-full w-full text-neutral-500" />,
+    icon: <IconFileText className="h-full w-full" />,
     href: "https://drive.google.com/file/d/1oW_f128pD_RvnnuahRi97bQ50bBfFN_0/view?usp=sharing",
   },
 ];
@@ -84,7 +84,6 @@ export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-[#FDFBF8] pb-24">
 
-      {/* Hero */}
       <div className="mx-auto max-w-[1000px] px-6 pt-36">
         <motion.header
           initial="hidden"
@@ -92,9 +91,8 @@ export default function PortfolioPage() {
           variants={fadeUp}
           className="flex flex-col sm:flex-row items-start gap-16 mb-20"
         >
-          {/* LEFT */}
           <div className="flex flex-col items-center sm:items-start gap-4 flex-shrink-0 w-52">
-            <div className="w-60 h-60 rounded-2xl overflow-hidden border">
+            <div className="w-60 h-60 rounded-2xl overflow-hidden border-2 border-emerald-100">
               <img
                 src="/mine.jpg"
                 alt="Chariz Dianne Falco"
@@ -103,18 +101,17 @@ export default function PortfolioPage() {
             </div>
           </div>
 
-          {/* RIGHT */}
           <div className="flex-1 flex flex-col gap-5 pt-2">
             <LayoutTextFlipDemo />
             <div className="flex items-center justify-center gap-5 text-[13px] font-semibold mt-1">
               <div className="flex gap-2">
-                <Button variant="outline">
+                <Button variant="outline" className="border-emerald-200 hover:border-emerald-400 hover:text-emerald-700 hover:bg-emerald-50 transition-colors duration-200">
                   <GitHub data-icon="inline-start" />
                   <a href="https://github.com/chariz1101">GitHub</a>
                 </Button>
-                <Button variant="outline">
+                <Button variant="outline" className="border-emerald-200 hover:border-emerald-400 hover:text-emerald-700 hover:bg-emerald-50 transition-colors duration-200">
                   <File data-icon="inline-end" />
-                  <a href="/resume.pdf">Resume</a>
+                  <a href="https://drive.google.com/file/d/1oW_f128pD_RvnnuahRi97bQ50bBfFN_0/view?usp=sharing">Resume</a>
                 </Button>
               </div>
             </div>
@@ -122,7 +119,6 @@ export default function PortfolioPage() {
         </motion.header>
       </div>
 
-      {/* Featured Projects */}
       <div className="mx-auto max-w-[1000px] px-6">
         <motion.section
           initial="hidden"
@@ -143,7 +139,7 @@ export default function PortfolioPage() {
             {projects.map((p) => (
               <div
                 key={p.name}
-                className="group flex flex-col gap-3 p-5 rounded-2xl border border-zinc-200 bg-white hover:border-zinc-300 hover:shadow-sm transition-all duration-200"
+                className="group flex flex-col gap-3 p-5 rounded-2xl border border-zinc-200 bg-white hover:border-emerald-300 hover:shadow-[0_2px_12px_rgba(16,185,129,0.08)] transition-all duration-200"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex items-center gap-2">
@@ -153,7 +149,7 @@ export default function PortfolioPage() {
                         href={p.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-[15px] font-semibold text-zinc-900 hover:text-emerald-700/80 underline decoration-zinc-300 hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200"
+                        className="text-[15px] font-semibold text-zinc-900 hover:text-emerald-700 underline decoration-zinc-300 hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200"
                       >
                         {p.name}
                       </a>
@@ -164,7 +160,7 @@ export default function PortfolioPage() {
                     )}
                   </div>
                   {p.tag && (
-                    <span className="text-[11px] font-medium px-2 py-0.5 bg-emerald-50 text-emerald-700/80 rounded-full border border-emerald-100 whitespace-nowrap">
+                    <span className="text-[11px] font-medium px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200 whitespace-nowrap">
                       {p.tag}
                     </span>
                   )}
@@ -176,7 +172,7 @@ export default function PortfolioPage() {
                   {p.stack.map((t) => (
                     <span
                       key={t}
-                      className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-zinc-100 text-zinc-500"
+                      className="text-[11px] font-mono px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-100"
                     >
                       {t}
                     </span>
@@ -188,7 +184,6 @@ export default function PortfolioPage() {
         </motion.section>
       </div>
 
-      {/* Contact */}
       <div className="mx-auto max-w-[1000px] px-6">
         <motion.section
           initial="hidden"
