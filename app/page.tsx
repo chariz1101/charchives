@@ -11,6 +11,7 @@ import {
   IconPhone,
   IconFileText,
 } from "@tabler/icons-react";
+import { Analytics } from "@vercel/analytics/next"
 
 const fadeUp = {
   hidden: { opacity: 0, y: 16 },
@@ -206,6 +207,7 @@ export default function PortfolioPage() {
         </motion.section>
       </div>
 
+      <Analytics />
     </div>
   );
 }
