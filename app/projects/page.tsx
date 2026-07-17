@@ -37,7 +37,7 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen max-w-4xl mx-auto px-6 py-24">
+    <main className="min-h-screen max-w-4xl mx-auto px-6 py-15">
       <ProjectsTile projects={projects} />
     </main>
   );
