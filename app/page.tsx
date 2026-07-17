@@ -81,34 +81,11 @@ const dockLinks = [
   },
 ];
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
-];
-
 export default function PortfolioPage() {
   return (
     <div className="min-h-screen bg-[#FDFBF8] pb-24">
 
-      {/* Non-sticky header nav */}
-      <header className="w-full border-b border-zinc-100 bg-[#FDFBF8]">
-        <div className="mx-auto max-w-[1000px] px-6 py-4 flex items-center justify-between">
-          <nav className="flex items-center gap-6">
-            {navLinks.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="text-[13px] font-medium text-zinc-500 hover:text-zinc-900 transition-colors duration-200"
-              >
-                {l.label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </header>
-
-      <div className="mx-auto max-w-[1000px] px-6 pt-36">
+      <div className="mx-auto max-w-[1000px] px-6 pt-15">
         <motion.header
           initial="hidden"
           animate="visible"
