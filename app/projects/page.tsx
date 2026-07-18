@@ -33,6 +33,14 @@ const projects = [
     stack: ["Unity", "C#"],
     link: "https://play.google.com/store/apps/details?id=com.wvsu.com.mobile2D&hl=en_NZ",
   },
+  {
+    emoji: "🕵️",
+    name: "Imposter",
+    tag: "Game",
+    desc: "A modern, neon-themed pass and play social deduction game.Players must determine who among them is the Imposter while the Imposter tries to blend in without knowing the secret word",
+    stack: ["React.js", "Vite", "TailwindCSS"],
+    link: "https://imposter-game-cyan.vercel.app/",
+  },
 ];
 
 export default function ProjectsPage() {
