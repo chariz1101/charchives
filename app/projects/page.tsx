@@ -41,6 +41,14 @@ const projects = [
     stack: ["React.js", "Vite", "TailwindCSS"],
     link: "https://imposter-game-cyan.vercel.app/",
   },
+  {
+    emoji: "🧬",
+    name: "DNA - Dancing Nurses Association Official Website",
+    tag: "Web App",
+    desc: "The official web platform for the Dancing Nurses Association (D.N.A.) of the Central Philippine University - College of Nursing. This application serves as a digital hub for performances, member directories, and organizational information.",
+    stack: ["Next.js", "TailwindCSS", "NeonDB"],
+    link: "https://dna-official-page.vercel.app/",
+  },
 ];
 
 export default function ProjectsPage() {
