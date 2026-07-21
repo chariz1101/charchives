@@ -76,20 +76,29 @@ export default function AboutPage() {
       <div className="mx-auto max-w-[1000px] px-6">
         
         <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          className="mb-16"
-        >
-          <div className="flex items-center gap-4 mb-8">
-            <h2 className="text-[1.75rem] font-bold text-zinc-900 whitespace-nowrap">About Me</h2>
-            <div className="flex-1 h-px bg-zinc-200" />
-          </div>
-          <p className="text-[15px] text-zinc-600 leading-relaxed max-w-3xl">
-            Computer Science major specializing in Artificial Intelligence with hands-on experience in Embedded Systems and Mobile Application Development. Proven track record in delivering complex projects, from AR-integrated thesis work to university-wide attendance systems. Dedicated to solving real-world problems through intelligent automation, responsive design, and hardware-software integration.
-          </p>
-        </motion.section>
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={fadeUp}
+  className="mb-16"
+>
+  <div className="flex items-center gap-4 mb-8">
+    <h2 className="text-[1.75rem] font-bold text-zinc-900 whitespace-nowrap">About Me</h2>
+    <div className="flex-1 h-px bg-zinc-200" />
+  </div>
+  <div className="flex flex-col sm:flex-row items-start gap-10">
+    <p className="text-[15px] text-zinc-600 leading-relaxed flex-1">
+      Computer Science major specializing in Artificial Intelligence with hands-on experience in Embedded Systems and Mobile Application Development. Proven track record in delivering complex projects, from AR-integrated thesis work to university-wide attendance systems. Dedicated to solving real-world problems through intelligent automation, responsive design, and hardware-software integration.
+    </p>
+    {/* <div className="flex-shrink-0 w-full sm:w-25 pr-5">
+      <img
+        src="/mine.jpg"
+        alt="Chariz Dianne Falco"
+        className="w-full rounded-2xl border border-zinc-100 shadow-sm object-cover"
+      />
+    </div> */}
+  </div>
+</motion.section>
 
         <motion.section
           initial="hidden"
