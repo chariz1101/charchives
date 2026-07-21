@@ -4,7 +4,7 @@ import Header from "@/components/header";
 
 export const metadata: Metadata = {
   title: "charchives — Chariz Dianne Falco",
-  description: "Portfolio of Chariz Dianne Falco, BS Computer Science — Artificial Intelligence, Magna Cum Laude.",
+  description: "Portfolio of Chariz Dianne Falco",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
