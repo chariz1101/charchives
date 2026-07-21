@@ -8,14 +8,14 @@ const navLinks = [
 
 export default function Header() {
   return (
-    <header className="w-full border-b border-zinc-100 bg-[#FDFBF8] flex items-center justify-center">
+    <header className="w-full border-b-2 border-emerald-100 bg-emerald-700 flex items-center justify-center">
       <div className="mx-auto max-w-[1000px] px-6 py-4 flex items-center justify-between">
         <nav className="flex items-center gap-6">
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="text-[13px] font-medium text-zinc-500 hover:text-emerald-900 transition-colors duration-200"
+              className="text-[13px] font-medium text-white hover:text-emerald-900 transition-colors duration-200"
             >
               {l.label}
             </Link>
