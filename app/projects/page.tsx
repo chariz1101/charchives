@@ -49,6 +49,14 @@ const projects = [
     stack: ["Next.js", "TailwindCSS", "NeonDB"],
     link: "https://dna-official-page.vercel.app/",
   },
+  {
+    emoji: "📲",
+    name: "Perfect Stack",
+    tag: "Game",
+    desc: "A simple stacking game made with react.",
+    stack: ["React.js"],
+    link: "https://perfect-stack.vercel.app/",
+  },
 ];
 
 export default function ProjectsPage() {
