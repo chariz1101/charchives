@@ -62,6 +62,14 @@ const events = [
     stack: ["MyBlock", "Python", "MICROpi"],
     link: "",
   },
+  {
+    emoji: "",
+    name: "AI Fest 2026 - Robotics Workshop",
+    tag: "Organizer",
+    desc: "We organized an arduino seminar-workshop for selected students and had an exhibition for the Makeblock Ultimate 2.0 kits.",
+    stack: ["Arduino", "Arduino C++", "Python", "MICROpi"],
+    link: "",
+  },
   // {
   //   emoji: "🌾",
   //   name: "FAMAS",
