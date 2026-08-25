@@ -31,7 +31,7 @@ const projects = [
     tag: "Game",
     desc: "An educational game conceptualized in collaboration with PLDT/Smart, featuring interactive Hiligaynon-based sub-games.",
     stack: ["Unity", "C#"],
-    link: "https://play.google.com/store/apps/details?id=com.wvsu.com.mobile2D&hl=en_NZ",
+    link: "https://apkpure.com/tuon-ta/com.wvsu.com.mobile2D",
   },
   {
     emoji: "🕵️",
