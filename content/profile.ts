@@ -2,6 +2,12 @@ export const profile = {
   name: "Chariz Dianne Falco",
   role: "Full-stack developer",
   location: "Iloilo City, Philippines",
+  current: {
+    role: "Data and Report Analyst",
+    org: "Innodata Knowledge Services Inc.",
+    arrangement: "Freelance",
+    since: "August 2026",
+  },
   /** Two sentences on the home page. Anything longer belongs on /about. */
   intro:
     "Computer science graduate, AI major. I build full-stack web and mobile apps, wire up robots, and design the interfaces in between — most of my work lives where hardware and software have to meet.",
@@ -82,6 +88,15 @@ export const skills = [
       "Adobe Creative Suite",
       "Blender",
     ],
+  },
+];
+
+export const experience = [
+  {
+    role: "Data and Report Analyst",
+    org: "Innodata Knowledge Services Inc.",
+    note: "Freelance",
+    date: "Aug 2026 – present",
   },
 ];
 

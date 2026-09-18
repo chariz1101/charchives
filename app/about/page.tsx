@@ -4,6 +4,7 @@ import Section from "@/components/section";
 import {
   awards,
   education,
+  experience,
   links,
   organisations,
   profile,
@@ -53,6 +54,28 @@ export default function AboutPage() {
           <p className="label mt-3 text-ink-faint">{profile.location}</p>
         </div>
       </header>
+
+      <Section title="Experience">
+        <ul className="border-t border-rule">
+          {experience.map((entry) => (
+            <li
+              key={`${entry.role}-${entry.org}`}
+              className="flex flex-col gap-2 border-b border-rule py-6 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
+            >
+              <div>
+                <h3 className="text-lg font-semibold text-ink">{entry.role}</h3>
+                <p className="mt-1 text-[0.95rem] text-ink-muted">{entry.org}</p>
+                <span className="mt-2 inline-block rounded-full border border-accent-line bg-accent-soft px-2.5 py-0.5 text-[12px] font-medium text-accent">
+                  {entry.note}
+                </span>
+              </div>
+              <p className="label shrink-0 text-ink-faint sm:text-right">
+                {entry.date}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </Section>
 
       <Section title="Education">
         <ul className="border-t border-rule">

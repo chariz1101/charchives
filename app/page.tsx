@@ -22,6 +22,14 @@ export default function HomePage() {
             {profile.intro}
           </p>
 
+          <p className="mt-5 max-w-[60ch] border-l-2 border-accent-line pl-4 text-[0.95rem] leading-relaxed text-ink-muted">
+            Currently a {profile.current.arrangement.toLowerCase()}{" "}
+            <span className="font-semibold text-ink">
+              {profile.current.role}
+            </span>{" "}
+            at {profile.current.org}, since {profile.current.since}.
+          </p>
+
           <p className="mt-7 flex flex-wrap gap-x-6 gap-y-2">
             <a
               href={`mailto:${links.email}`}
