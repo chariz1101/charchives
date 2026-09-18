@@ -1,76 +1,55 @@
-# charchives — Chariz Dianne Falco's Portfolio
+# charchives
 
-A minimal, clean portfolio built with Next.js, Tailwind CSS, and Framer Motion.
+Portfolio of Chariz Dianne Falco — [chariz1101](https://github.com/chariz1101).
 
-## Tech Stack
+Next.js App Router, Tailwind CSS v4, no UI library. Every page is a Server
+Component and prerenders to static HTML; the only client-side JavaScript is
+the nav, which needs the current pathname.
 
-- **Framework** — Next.js 15 (App Router)
-- **Styling** — Tailwind CSS v4
-- **Animations** — Framer Motion
-- **UI Components** — shadcn/ui, Aceternity UI (FloatingDock, LayoutTextFlip)
-- **Icons** — Tabler Icons, @deemlol/next-icons
-- **Font** — Poppins (Google Fonts)
-
-## Features
-
-- Animated hero with a rotating role flip text
-- Featured projects grid with live links and tech stack tags
-- Floating dock contact section (GitHub, LinkedIn, Email, Phone, Resume)
-- Smooth scroll fade-up animations
-- Fully responsive
-
-## Getting Started
+## Running it
 
 ```bash
-# Install dependencies
 npm install
-
-# Run the development server
-npm run dev
+npm run dev     # http://localhost:3000
+npm run build   # production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+## Where the content lives
 
-## Project Structure
+Nothing is hardcoded in a page. Both content modules are the single source of
+truth, and every page reads from them.
+
+| File                  | Holds                                                     |
+| --------------------- | --------------------------------------------------------- |
+| `content/projects.ts` | Every project, its case study, and the `featured` flag     |
+| `content/profile.ts`  | Bio, contact links, skills, education, leadership, awards  |
+
+To add a project, append to `projects` in `content/projects.ts`. It shows up in
+the index at `/projects` and gets a case study at `/projects/<slug>` with no
+other changes. Set `featured: true` to also put it on the home page.
+
+Each project has an optional `outcome` field. It is empty everywhere right now
+— fill it in with what the project actually did (users, adoption, time saved)
+and an **Outcome** section appears on that case study.
+
+## Structure
 
 ```
 app/
-  page.tsx          # Main portfolio page
-  globals.css       # Global styles and Poppins font
-components/
-  layoutTextFlip.tsx        # Rotating role text component
-  ui/
-    floating-dock.tsx       # Aceternity FloatingDock
-    layout-text-flip.tsx    # Aceternity LayoutTextFlip
-    button.tsx              # shadcn Button
-public/
-  mine.jpg          # Profile photo
-  resume.pdf        # Resume (optional, or link to Google Drive)
+  layout.tsx              fonts, metadata, nav, footer
+  page.tsx                home — intro, selected work, organising, contact
+  projects/page.tsx       the full index
+  projects/[slug]/        one case study per project, prerendered
+  about/page.tsx          bio, education, skills, leadership, recognition
+  globals.css             colour and type tokens, light and dark
+components/               nav, footer, section header, project index
+content/                  projects.ts, profile.ts
 ```
 
-## Customization
+## Design
 
-- **Projects** — Edit the `projects` array in `app/page.tsx`
-- **Dock links** — Edit the `dockLinks` array in `app/page.tsx`
-- **Roles** — Edit the `words` array in `components/layoutTextFlip.tsx`
-- **Photo** — Replace `public/mine.jpg` with your own image
-
-## Deployment
-
-Deploy instantly on [Vercel](https://vercel.com):
-
-```bash
-npm run build
-```
-
-Or connect your GitHub repo to Vercel for automatic deployments on every push.
-
-## Author
-
-**Chariz Dianne Falco**
-BS Computer Science — Artificial Intelligence, Magna Cum Laude
-West Visayas State University, Class of 2026
-
-- GitHub: [@chariz1101](https://github.com/chariz1101)
-- LinkedIn: [chariz-dianne-falco](https://www.linkedin.com/in/chariz-dianne-falco-12350626a/)
-- Email: charizdiannefalco@gmail.com
+Ink on paper: an index, not a card grid. IBM Plex Sans for reading, IBM Plex
+Mono for anything that is metadata, Instrument Serif for headings, all
+self-hosted through `next/font`. One accent colour, used for the index numbers
+and little else. Dark mode follows the system setting.

@@ -1,321 +1,131 @@
-"use client";
-import { motion } from "framer-motion";
-import { LayoutTextFlipDemo } from "@/components/layoutTextFlip";
-import { GitHub, File } from "@deemlol/next-icons";
-import { Button } from "@/components/ui/button";
-import { FloatingDock } from "@/components/ui/floating-dock";
-import {
-  IconBrandGithub,
-  IconBrandLinkedin,
-  IconMail,
-  IconPhone,
-  IconFileText,
-} from "@tabler/icons-react";
-import { Analytics } from "@vercel/analytics/next"
+import Image from "next/image";
+import Link from "next/link";
+import ProjectIndex from "@/components/project-index";
+import Section from "@/components/section";
+import StackList from "@/components/stack-list";
+import { events, links, profile } from "@/content/profile";
+import { featuredProjects, projects } from "@/content/projects";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
-};
-
-const projects = [
-  {
-    emoji: "👓",
-    name: "SmartSense",
-    tag: "Thesis",
-    desc: "An application utilizing audio and video inputs for real-time transcription, displaying directly to augmented reality glasses.",
-    stack: ["Flutter", "Python", "Flask"],
-    link: "",
-  },
-  {
-    emoji: "🌾",
-    name: "FAMAS",
-    tag: null,
-    desc: "A multi-tenant farm management platform featuring timesheet tracking, task management, inventory, accounting, and role-based access control.",
-    stack: ["Next.js", "TailwindCSS", "Node.js", "PostgreSQL"],
-    link: "https://famas-staging.springvalley.tech/",
-  },
-  {
-    emoji: "📍",
-    name: "Tuon.ILO",
-    tag: null,
-    desc: "A community-driven civic technology platform designed to help students, freelancers, and remote workers discover, filter, and review the best study spaces and cafes in Iloilo City.",
-    stack: ["Next.js", "TailwindCSS", "Mapbox GL JS", "PostgreSQL", "Zod"],
-    link: "https://tuon-ilo.vercel.app/",
-  },
-  {
-    emoji: "🎮",
-    name: "Tuon Ta!",
-    tag: null,
-    desc: "An educational game conceptualized in collaboration with PLDT/Smart, featuring interactive Hiligaynon-based sub-games.",
-    stack: ["Unity", "C#"],
-    link: "https://play.google.com/store/apps/details?id=com.wvsu.com.mobile2D&hl=en_NZ",
-  },
-];
-
-const events = [
-  {
-    emoji: "",
-    name: "AI Fest 2026 - AI in Motion",
-    tag: "Organizer",
-    desc: "Under MRSP, I helped in facilitating the event while opening a booth and utilizing the UltraArm + ComVis to make an interactive game.",
-    stack: ["MyBlock", "Python", "MICROpi"],
-    link: "",
-  },
-  {
-    emoji: "",
-    name: "AI Fest 2026 - Robotics Workshop",
-    tag: "Organizer",
-    desc: "We organized an arduino seminar-workshop for selected students and had an exhibition for the Makeblock Ultimate 2.0 kits.",
-    stack: ["Arduino", "Arduino C++", "Python", "MICROpi"],
-    link: "",
-  },
-  // {
-  //   emoji: "🌾",
-  //   name: "FAMAS",
-  //   tag: null,
-  //   desc: "A multi-tenant farm management platform featuring timesheet tracking, task management, inventory, accounting, and role-based access control.",
-  //   stack: ["Next.js", "TailwindCSS", "Node.js", "PostgreSQL"],
-  //   link: "https://famas-staging.springvalley.tech/",
-  // },
-  // {
-  //   emoji: "📍",
-  //   name: "Tuon.ILO",
-  //   tag: null,
-  //   desc: "A community-driven civic technology platform designed to help students, freelancers, and remote workers discover, filter, and review the best study spaces and cafes in Iloilo City.",
-  //   stack: ["Next.js", "TailwindCSS", "Mapbox GL JS", "PostgreSQL", "Zod"],
-  //   link: "https://tuon-ilo.vercel.app/",
-  // },
-  // {
-  //   emoji: "🎮",
-  //   name: "Tuon Ta!",
-  //   tag: null,
-  //   desc: "An educational game conceptualized in collaboration with PLDT/Smart, featuring interactive Hiligaynon-based sub-games.",
-  //   stack: ["Unity", "C#"],
-  //   link: "https://play.google.com/store/apps/details?id=com.wvsu.com.mobile2D&hl=en_NZ",
-  // },
-];
-
-const dockLinks = [
-  {
-    title: "GitHub",
-    icon: <IconBrandGithub className="h-full w-full" />,
-    href: "https://github.com/chariz1101",
-  },
-  {
-    title: "LinkedIn",
-    icon: <IconBrandLinkedin className="h-full w-full" />,
-    href: "https://www.linkedin.com/in/chariz-dianne-falco-12350626a/",
-  },
-  {
-    title: "Email",
-    icon: <IconMail className="h-full w-full" />,
-    href: "mailto:charizdiannefalco@gmail.com",
-  },
-  {
-    title: "Phone",
-    icon: <IconPhone className="h-full w-full" />,
-    href: "tel:09303443297",
-  },
-  {
-    title: "Resume",
-    icon: <IconFileText className="h-full w-full" />,
-    href: "https://drive.google.com/file/d/1oW_f128pD_RvnnuahRi97bQ50bBfFN_0/view?usp=sharing",
-  },
-];
-
-export default function PortfolioPage() {
+export default function HomePage() {
   return (
-    <div className="min-h-screen bg-[#FDFBF8] pb-24">
+    <div className="mx-auto w-full max-w-4xl px-5 sm:px-8">
+      <section className="grid gap-8 pt-12 sm:grid-cols-[1fr_14rem] sm:items-start sm:gap-12 sm:pt-16">
+        <div>
+          <h1 className="text-[2.5rem] leading-[1.05] sm:text-[3.5rem]">
+            {profile.name}
+          </h1>
+          <p className="label mt-3 text-ink-faint">
+            {profile.role} · {profile.location}
+          </p>
 
-      <div className="mx-auto max-w-[1000px] px-6 pt-15">
-        <motion.header
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-          className="flex flex-col sm:flex-row items-start gap-16 mb-20"
-        >
-          <div className="flex flex-col items-center sm:items-start gap-4 flex-shrink-0 w-52">
-            <div className="w-60 h-60 rounded-2xl overflow-hidden border-2 border-emerald-100">
-              <img
-                src="/mine.jpg"
-                alt="Chariz Dianne Falco"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
+          <p className="mt-6 max-w-[60ch] text-[1.0625rem] leading-relaxed text-ink-muted">
+            {profile.intro}
+          </p>
 
-          <div className="flex-1 flex flex-col gap-5 pt-2">
-            <LayoutTextFlipDemo />
-            <div className="flex items-center justify-center gap-5 text-[13px] font-semibold mt-1">
-              <div className="flex gap-2">
-                <Button variant="outline" className="border-emerald-200 hover:border-emerald-400 hover:text-emerald-700 hover:bg-emerald-50 transition-colors duration-200">
-                  <GitHub data-icon="inline-start" />
-                  <a href="https://github.com/chariz1101">GitHub</a>
-                </Button>
-                <Button variant="outline" className="border-emerald-200 hover:border-emerald-400 hover:text-emerald-700 hover:bg-emerald-50 transition-colors duration-200">
-                  <File data-icon="inline-end" />
-                  <a href="https://drive.google.com/file/d/1oW_f128pD_RvnnuahRi97bQ50bBfFN_0/view?usp=sharing">Resume</a>
-                </Button>
+          <p className="mt-7 flex flex-wrap gap-x-6 gap-y-2">
+            <a
+              href={`mailto:${links.email}`}
+              className="text-[0.95rem] text-ink underline decoration-accent underline-offset-4 hover:text-accent"
+            >
+              {links.email}
+            </a>
+            <a
+              href={links.resume}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[0.95rem] text-ink underline decoration-rule underline-offset-4 hover:decoration-accent"
+            >
+              Résumé
+            </a>
+            <a
+              href={links.github}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[0.95rem] text-ink underline decoration-rule underline-offset-4 hover:decoration-accent"
+            >
+              GitHub
+            </a>
+          </p>
+        </div>
+
+        <div className="order-first w-32 sm:order-none sm:w-full">
+          <Image
+            src="/mine.jpg"
+            alt={profile.name}
+            width={448}
+            height={448}
+            loading="eager"
+            sizes="(min-width: 640px) 224px, 128px"
+            className="w-full border border-rule object-cover"
+          />
+        </div>
+      </section>
+
+      <Section
+        title="Selected work"
+        meta={`${featuredProjects.length} of ${projects.length}`}
+      >
+        <ProjectIndex projects={featuredProjects} />
+        <p className="pt-6">
+          <Link
+            href="/projects"
+            className="text-[0.95rem] text-ink underline decoration-rule underline-offset-4 hover:decoration-accent"
+          >
+            {`All ${projects.length} projects →`}
+          </Link>
+        </p>
+      </Section>
+
+      <Section title="Organising" meta="MRSP Western Visayas">
+        <ul className="border-t border-rule">
+          {events.map((event) => (
+            <li key={event.name} className="border-b border-rule py-7">
+              <h3 className="font-serif text-xl text-ink sm:text-2xl">
+                {event.name}
+              </h3>
+              <p className="mt-2 max-w-[62ch] text-[0.95rem] leading-relaxed text-ink-muted">
+                {event.detail}
+              </p>
+              <div className="mt-4">
+                <StackList stack={event.stack} />
               </div>
-            </div>
-          </div>
-        </motion.header>
-      </div>
+            </li>
+          ))}
+        </ul>
+      </Section>
 
-      <div className="mx-auto max-w-[1000px] px-6">
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={fadeUp}
-          id="projects"
-          className="mb-20 scroll-mt-32"
-        >
-          <div className="flex items-center gap-4 mb-8">
-            <h2 className="text-[1.75rem] font-bold text-zinc-900 whitespace-nowrap">
-              Featured Projects
-            </h2>
-            <div className="flex-1 h-px bg-zinc-200" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {projects.map((p) => (
-              <div
-                key={p.name}
-                className="group flex flex-col gap-3 p-5 rounded-2xl border border-zinc-200 bg-white hover:border-emerald-300 hover:shadow-[0_2px_12px_rgba(16,185,129,0.08)] transition-all duration-200"
+      <Section id="contact" title="Get in touch" meta="Iloilo City, PH">
+        <p className="max-w-[58ch] text-[0.95rem] leading-relaxed text-ink-muted">
+          Email is the surest way to reach me.
+        </p>
+        <p className="mt-6">
+          <a
+            href={`mailto:${links.email}`}
+            className="font-serif text-2xl text-ink underline decoration-accent decoration-1 underline-offset-[6px] hover:text-accent sm:text-4xl"
+          >
+            {links.email}
+          </a>
+        </p>
+        <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+          {[
+            { label: "LinkedIn", href: links.linkedin },
+            { label: "GitHub", href: links.github },
+            { label: "Résumé", href: links.resume },
+            { label: links.phone, href: links.phoneHref },
+          ].map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                className="text-[0.95rem] text-ink-muted underline decoration-rule underline-offset-4 hover:text-ink hover:decoration-accent"
               >
-                <div className="flex items-start justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl">{p.emoji}</span>
-                    {p.link ? (
-                      <a
-                        href={p.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[15px] font-semibold text-zinc-900 hover:text-emerald-700 underline decoration-zinc-300 hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200"
-                      >
-                        {p.name}
-                      </a>
-                    ) : (
-                      <span className="text-[15px] font-semibold text-zinc-900">
-                        {p.name}
-                      </span>
-                    )}
-                  </div>
-                  {p.tag && (
-                    <span className="text-[11px] font-medium px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200 whitespace-nowrap">
-                      {p.tag}
-                    </span>
-                  )}
-                </div>
-                <p className="text-[13.5px] text-zinc-500 leading-relaxed flex-1">
-                  {p.desc}
-                </p>
-                <div className="flex flex-wrap gap-1.5 mt-auto">
-                  {p.stack.map((t) => (
-                    <span
-                      key={t}
-                      className="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-100"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-      </div>
-
-      <div className="mx-auto max-w-[1000px] px-6">
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={fadeUp}
-          id="projects"
-          className="mb-20 scroll-mt-32"
-        >
-          <div className="flex items-center gap-4 mb-8">
-            <h2 className="text-[1.75rem] font-bold text-zinc-900 whitespace-nowrap">
-              Featured Events
-            </h2>
-            <div className="flex-1 h-px bg-zinc-200" />
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {events.map((p) => (
-              <div
-                key={p.name}
-                className="group flex flex-col gap-3 p-5 rounded-2xl border border-zinc-200 bg-white hover:border-emerald-300 hover:shadow-[0_2px_12px_rgba(16,185,129,0.08)] transition-all duration-200"
-              >
-                <div className="flex items-start justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xl">{p.emoji}</span>
-                    {p.link ? (
-                      <a
-                        href={p.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[15px] font-semibold text-zinc-900 hover:text-emerald-700 underline decoration-zinc-300 hover:decoration-emerald-400 underline-offset-4 transition-colors duration-200"
-                      >
-                        {p.name}
-                      </a>
-                    ) : (
-                      <span className="text-[15px] font-semibold text-zinc-900">
-                        {p.name}
-                      </span>
-                    )}
-                  </div>
-                  {p.tag && (
-                    <span className="text-[11px] font-medium px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200 whitespace-nowrap">
-                      {p.tag}
-                    </span>
-                  )}
-                </div>
-                <p className="text-[13.5px] text-zinc-500 leading-relaxed flex-1">
-                  {p.desc}
-                </p>
-                <div className="flex flex-wrap gap-1.5 mt-auto">
-                  {p.stack.map((t) => (
-                    <span
-                      key={t}
-                      className="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-100"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-      </div>
-
-      <div className="mx-auto max-w-[1000px] px-6">
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-80px" }}
-          variants={fadeUp}
-          id="contact"
-          className="scroll-mt-32"
-        >
-          <div className="flex items-center gap-4 mb-8">
-            <h2 className="text-[1.75rem] font-bold text-zinc-900 whitespace-nowrap">
-              Contact Me
-            </h2>
-            <div className="flex-1 h-px bg-zinc-200" />
-          </div>
-
-          <div className="flex items-center justify-center py-8">
-            <FloatingDock items={dockLinks} />
-          </div>
-        </motion.section>
-      </div>
-
-      <Analytics />
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Section>
     </div>
   );
 }
