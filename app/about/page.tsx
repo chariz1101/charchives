@@ -20,7 +20,7 @@ export default function AboutPage() {
     <div className="mx-auto w-full max-w-4xl px-5 pt-14 sm:px-8 sm:pt-20">
       <header className="grid gap-8 pb-14 sm:grid-cols-[1fr_13rem] sm:items-start sm:gap-12">
         <div>
-          <h1 className="text-[2.5rem] leading-[1.05] sm:text-5xl">About</h1>
+          <h1 className="text-[2.25rem] leading-[1.1] font-bold sm:text-5xl">About</h1>
           <div className="mt-6 max-w-[62ch] space-y-5">
             {profile.about.map((paragraph) => (
               <p
@@ -48,7 +48,7 @@ export default function AboutPage() {
             width={416}
             height={416}
             sizes="(min-width: 640px) 208px, 100vw"
-            className="w-40 border border-rule object-cover sm:w-full"
+            className="w-40 rounded-2xl border-2 border-emerald-100 object-cover sm:w-full"
           />
           <p className="label mt-3 text-ink-faint">{profile.location}</p>
         </div>
@@ -62,11 +62,13 @@ export default function AboutPage() {
               className="flex flex-col gap-2 border-b border-rule py-6 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8"
             >
               <div>
-                <h3 className="font-serif text-xl text-ink">{entry.school}</h3>
+                <h3 className="text-lg font-semibold text-ink">{entry.school}</h3>
                 <p className="mt-1 text-[0.95rem] text-ink-muted">
                   {entry.detail}
                 </p>
-                <p className="mt-1 text-[0.95rem] text-accent">{entry.note}</p>
+                <span className="mt-2 inline-block rounded-full border border-accent-line bg-accent-soft px-2.5 py-0.5 text-[12px] font-medium text-accent">
+                  {entry.note}
+                </span>
               </div>
               <div className="shrink-0 sm:text-right">
                 <p className="label text-ink-faint">{entry.date}</p>
@@ -85,8 +87,15 @@ export default function AboutPage() {
               className="grid gap-x-8 gap-y-2 border-b border-rule py-6 sm:grid-cols-[10rem_1fr]"
             >
               <dt className="label pt-1 text-ink-faint">{group.group}</dt>
-              <dd className="font-mono text-[0.8rem] leading-[2] text-ink-muted">
-                {group.items.join("  ·  ")}
+              <dd className="flex flex-wrap gap-1.5">
+                {group.items.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-md border border-rule bg-surface px-2 py-1 text-[12px] text-ink-muted"
+                  >
+                    {item}
+                  </span>
+                ))}
               </dd>
             </div>
           ))}

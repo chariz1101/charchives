@@ -10,9 +10,12 @@ export default function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="mt-20 scroll-mt-20 border-t border-rule pt-6">
-      <div className="flex items-baseline justify-between gap-4 pb-7">
-        <h2 className="text-[1.6rem] sm:text-3xl">{title}</h2>
+    <section id={id} className="mt-20 scroll-mt-24">
+      <div className="mb-8 flex items-center gap-4">
+        <h2 className="text-[1.75rem] font-bold whitespace-nowrap text-ink">
+          {title}
+        </h2>
+        <div className="h-px flex-1 bg-rule" />
         {meta ? <span className="label text-ink-faint">{meta}</span> : null}
       </div>
       {children}

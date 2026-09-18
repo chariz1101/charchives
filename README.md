@@ -49,7 +49,11 @@ content/                  projects.ts, profile.ts
 
 ## Design
 
-Ink on paper: an index, not a card grid. IBM Plex Sans for reading, IBM Plex
-Mono for anything that is metadata, Instrument Serif for headings, all
-self-hosted through `next/font`. One accent colour, used for the index numbers
-and little else. Dark mode follows the system setting.
+Poppins throughout, self-hosted through `next/font` rather than a
+render-blocking Google Fonts import. Emerald on warm off-white, with zinc for
+text. Projects are a numbered index rather than a card grid; the accent carries
+the index numbers, the stack chips, and links.
+
+Colours live as CSS custom properties on `:root` in `app/globals.css` and are
+exposed to Tailwind through `@theme inline`, so changing the accent is one
+line.

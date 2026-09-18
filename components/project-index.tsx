@@ -17,13 +17,13 @@ export default function ProjectIndex({ projects }: { projects: Project[] }) {
 
             <div>
               <div className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-1">
-                <h3 className="font-serif text-2xl text-ink underline decoration-transparent decoration-1 underline-offset-[6px] group-hover:decoration-accent sm:text-[1.75rem]">
+                <h3 className="text-xl font-semibold text-ink underline decoration-transparent decoration-2 underline-offset-[6px] group-hover:decoration-accent-line">
                   {project.name}
                 </h3>
                 <span className="label text-ink-faint">{project.kind}</span>
               </div>
 
-              <p className="mt-2 max-w-[62ch] text-[0.95rem] leading-relaxed text-ink-muted">
+              <p className="mt-2 max-w-[62ch] text-[0.9rem] leading-relaxed text-ink-muted">
                 {project.summary}
               </p>
 
