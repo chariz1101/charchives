@@ -1,68 +1,28 @@
-import ProjectsTile from "@/components/projectsTile";
+import type { Metadata } from "next";
+import ProjectIndex from "@/components/project-index";
+import { projects } from "@/content/projects";
 
-const projects = [
-  {
-    emoji: "👓",
-    name: "SmartSense",
-    tag: "Thesis",
-    desc: "An application utilizing audio and video inputs for real-time transcription, displaying directly to augmented reality glasses.",
-    stack: ["Flutter", "Python", "Flask"],
-    link: "",
-  },
-  {
-    emoji: "🌾",
-    name: "FAMAS",
-    tag: "Platform",
-    desc: "A multi-tenant farm management platform featuring timesheet tracking, task management, inventory, accounting, and role-based access control.",
-    stack: ["Next.js", "TailwindCSS", "Node.js", "PostgreSQL"],
-    link: "https://famas-staging.springvalley.tech/",
-  },
-  {
-    emoji: "📍",
-    name: "Tuon.ILO",
-    tag: "Web App",
-    desc: "A community-driven civic technology platform designed to help students, freelancers, and remote workers discover, filter, and review the best study spaces and cafes in Iloilo City.",
-    stack: ["Next.js", "TailwindCSS", "Mapbox GL JS", "PostgreSQL", "Zod"],
-    link: "https://tuon-ilo.vercel.app/",
-  },
-  {
-    emoji: "🎮",
-    name: "Tuon Ta!",
-    tag: "Game",
-    desc: "An educational game conceptualized in collaboration with PLDT/Smart, featuring interactive Hiligaynon-based sub-games.",
-    stack: ["Unity", "C#"],
-    link: "https://apkpure.com/tuon-ta/com.wvsu.com.mobile2D",
-  },
-  {
-    emoji: "🕵️",
-    name: "Imposter",
-    tag: "Game",
-    desc: "A modern, neon-themed pass and play social deduction game.Players must determine who among them is the Imposter while the Imposter tries to blend in without knowing the secret word",
-    stack: ["React.js", "Vite", "TailwindCSS"],
-    link: "https://imposter-game-cyan.vercel.app/",
-  },
-  {
-    emoji: "🧬",
-    name: "DNA - Dancing Nurses Association Official Website",
-    tag: "Web App",
-    desc: "The official web platform for the Dancing Nurses Association (D.N.A.) of the Central Philippine University - College of Nursing. This application serves as a digital hub for performances, member directories, and organizational information.",
-    stack: ["Next.js", "TailwindCSS", "NeonDB"],
-    link: "https://dna-official-page.vercel.app/",
-  },
-  {
-    emoji: "📲",
-    name: "Perfect Stack",
-    tag: "Game",
-    desc: "A simple stacking game made with react.",
-    stack: ["React.js"],
-    link: "https://perfect-stack.vercel.app/",
-  },
-];
+export const metadata: Metadata = {
+  title: "Work",
+  description:
+    "Web platforms, embedded systems, and games built by Chariz Dianne Falco.",
+};
 
 export default function ProjectsPage() {
   return (
-    <main className="min-h-screen max-w-4xl mx-auto px-6 py-15">
-      <ProjectsTile projects={projects} />
-    </main>
+    <div className="mx-auto w-full max-w-4xl px-5 pt-14 sm:px-8 sm:pt-20">
+      <header className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 pb-10">
+        <div>
+          <h1 className="text-[2.5rem] leading-[1.05] sm:text-5xl">Work</h1>
+          <p className="mt-5 max-w-[60ch] text-[1.0625rem] leading-relaxed text-ink-muted">
+            Everything worth showing, most substantial first. Each entry opens
+            into what the project was and what I built.
+          </p>
+        </div>
+        <p className="label text-ink-faint">{projects.length} projects</p>
+      </header>
+
+      <ProjectIndex projects={projects} />
+    </div>
   );
 }
