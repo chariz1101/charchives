@@ -1,60 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  --paper: #ffffff;
-  --paper-soft: #f7f5f1;
-  --ink: #14120f;
-  --ink-muted: #55504a;
-  --ink-faint: #8b857c;
-  --rule: #e4e0d8;
-  --accent: #b33c15;
-  --accent-soft: #fbefe9;
-  --selection: #f6dfb8;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --paper: #121110;
-    --paper-soft: #1a1815;
-    --ink: #f2eee7;
-    --ink-muted: #ada79c;
-    --ink-faint: #7c766c;
-    --rule: #2c2926;
-    --accent: #f0764a;
-    --accent-soft: #2a1b14;
-    --selection: #45351c;
-  }
+  --paper: #fdfbf8;
+  --surface: #ffffff;
+  --ink: #18181b;
+  --ink-muted: #52525b;
+  --ink-faint: #71717a;
+  --rule: #e4e4e7;
+  --accent: #047857;
+  --accent-strong: #065f46;
+  --accent-soft: #ecfdf5;
+  --accent-line: #a7f3d0;
 }
 
 @theme inline {
   --color-paper: var(--paper);
-  --color-paper-soft: var(--paper-soft);
+  --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
   --color-ink-faint: var(--ink-faint);
   --color-rule: var(--rule);
   --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
   --color-accent-soft: var(--accent-soft);
+  --color-accent-line: var(--accent-line);
 
-  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-instrument-serif), ui-serif, Georgia, serif;
-  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
   html {
     font-family: var(--font-sans);
+    scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
   }
 
   body {
     background: var(--paper);
     color: var(--ink);
-    text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    background: var(--selection);
+    background: #fde68a;
     color: var(--ink);
   }
 
@@ -66,18 +53,16 @@
   h1,
   h2,
   h3 {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    letter-spacing: -0.01em;
+    font-weight: 700;
+    letter-spacing: -0.015em;
   }
 }
 
-/* The mono label that opens every section and carries every piece of
-   metadata — the one recurring device the whole layout leans on. */
+/* The small uppercase label that opens every section and carries every piece
+   of metadata — the one recurring device the layout leans on. */
 @utility label {
-  font-family: var(--font-mono);
   font-size: 0.6875rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
 }

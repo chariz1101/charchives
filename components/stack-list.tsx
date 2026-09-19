@@ -1,7 +1,14 @@
 export default function StackList({ stack }: { stack: string[] }) {
   return (
-    <p className="font-mono text-[0.7rem] tracking-wide text-ink-faint">
-      {stack.join("  ·  ")}
-    </p>
+    <ul className="flex flex-wrap gap-1.5">
+      {stack.map((tool) => (
+        <li
+          key={tool}
+          className="rounded-md border border-accent-line bg-accent-soft px-2 py-0.5 text-[11px] text-accent"
+        >
+          {tool}
+        </li>
+      ))}
+    </ul>
   );
 }

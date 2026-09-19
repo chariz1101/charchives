@@ -11,7 +11,7 @@ export default function HomePage() {
     <div className="mx-auto w-full max-w-4xl px-5 sm:px-8">
       <section className="grid gap-8 pt-12 sm:grid-cols-[1fr_14rem] sm:items-start sm:gap-12 sm:pt-16">
         <div>
-          <h1 className="text-[2.5rem] leading-[1.05] sm:text-[3.5rem]">
+          <h1 className="text-[2.25rem] leading-[1.1] font-bold sm:text-[3rem]">
             {profile.name}
           </h1>
           <p className="label mt-3 text-ink-faint">
@@ -20,6 +20,14 @@ export default function HomePage() {
 
           <p className="mt-6 max-w-[60ch] text-[1.0625rem] leading-relaxed text-ink-muted">
             {profile.intro}
+          </p>
+
+          <p className="mt-5 max-w-[60ch] border-l-2 border-accent-line pl-4 text-[0.95rem] leading-relaxed text-ink-muted">
+            Currently a {profile.current.arrangement.toLowerCase()}{" "}
+            <span className="font-semibold text-ink">
+              {profile.current.role}
+            </span>{" "}
+            at {profile.current.org}, since {profile.current.since}.
           </p>
 
           <p className="mt-7 flex flex-wrap gap-x-6 gap-y-2">
@@ -56,7 +64,7 @@ export default function HomePage() {
             height={448}
             loading="eager"
             sizes="(min-width: 640px) 224px, 128px"
-            className="w-full border border-rule object-cover"
+            className="w-full rounded-2xl border-2 border-emerald-100 object-cover"
           />
         </div>
       </section>
@@ -80,7 +88,7 @@ export default function HomePage() {
         <ul className="border-t border-rule">
           {events.map((event) => (
             <li key={event.name} className="border-b border-rule py-7">
-              <h3 className="font-serif text-xl text-ink sm:text-2xl">
+              <h3 className="text-xl font-semibold text-ink sm:text-2xl">
                 {event.name}
               </h3>
               <p className="mt-2 max-w-[62ch] text-[0.95rem] leading-relaxed text-ink-muted">
@@ -101,7 +109,7 @@ export default function HomePage() {
         <p className="mt-6">
           <a
             href={`mailto:${links.email}`}
-            className="font-serif text-2xl text-ink underline decoration-accent decoration-1 underline-offset-[6px] hover:text-accent sm:text-4xl"
+            className="text-xl font-semibold break-all text-accent underline decoration-accent-line decoration-2 underline-offset-[6px] hover:decoration-accent sm:text-3xl"
           >
             {links.email}
           </a>

@@ -12,16 +12,16 @@ export default function SiteNav() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-rule bg-paper/90 backdrop-blur-sm">
-      <div className="mx-auto flex w-full max-w-4xl items-baseline justify-between gap-6 px-5 py-4 sm:px-8">
+    <header className="sticky top-0 z-50 border-b-2 border-emerald-100 bg-emerald-700">
+      <div className="mx-auto flex w-full max-w-4xl items-center justify-between gap-6 px-5 py-4 sm:px-8">
         <Link
           href="/"
-          className="font-mono text-sm font-medium tracking-tight text-ink hover:text-accent"
+          className="text-sm font-semibold tracking-tight text-white hover:text-emerald-100"
         >
-          charchives<span className="text-accent">.</span>
+          charchives
         </Link>
 
-        <nav className="flex items-baseline gap-6">
+        <nav className="flex items-center gap-6">
           {nav.map((item) => {
             const current = pathname.startsWith(item.href);
             return (
@@ -29,8 +29,10 @@ export default function SiteNav() {
                 key={item.href}
                 href={item.href}
                 aria-current={current ? "page" : undefined}
-                className={`label ${
-                  current ? "text-accent" : "text-ink-faint hover:text-ink"
+                className={`text-[13px] font-medium ${
+                  current
+                    ? "text-white underline decoration-emerald-300 decoration-2 underline-offset-[6px]"
+                    : "text-emerald-100 hover:text-white"
                 }`}
               >
                 {item.label}
@@ -39,7 +41,7 @@ export default function SiteNav() {
           })}
           <Link
             href="/#contact"
-            className="label text-ink-faint hover:text-ink"
+            className="text-[13px] font-medium text-emerald-100 hover:text-white"
           >
             Contact
           </Link>

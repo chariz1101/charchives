@@ -1,13 +1,19 @@
 export const profile = {
   name: "Chariz Dianne Falco",
-  role: "Computer science student, AI major",
+  role: "Full-stack developer",
   location: "Iloilo City, Philippines",
+  current: {
+    role: "Data and Report Analyst",
+    org: "Innodata Knowledge Services Inc.",
+    arrangement: "Freelance",
+    since: "August 2026",
+  },
   /** Two sentences on the home page. Anything longer belongs on /about. */
   intro:
-    "I build web platforms, and I build the things that talk to hardware. Most of my work sits where those two meet — an AR transcription system for my thesis, a farm management platform, robotics workshops for the society I run.",
+    "Computer science graduate, AI major. I build full-stack web and mobile apps, wire up robots, and design the interfaces in between — most of my work lives where hardware and software have to meet.",
   about: [
-    "I am finishing a BS in Computer Science, majoring in Artificial Intelligence, at West Visayas State University in Iloilo City. I graduate in June 2026.",
-    "Most of what I have built is either a web platform someone needed to run an organisation, or something with a microcontroller in it. My thesis is an augmented-reality transcription system; before that I worked on a university-wide attendance system, a multi-tenant farm management platform, and an educational game with PLDT and Smart. I also run the Western Visayas junior chapter of the Mechatronics and Robotics Society of the Philippines, which mostly means teaching Arduino to people who have never soldered anything.",
+    "I graduated from West Visayas State University in June 2026 with a BS in Computer Science, majoring in Artificial Intelligence, and I am based in Iloilo City.",
+    "Most of what I build is either a web platform someone needed to run an organisation, or something with a microcontroller in it. My thesis put live transcription onto augmented-reality glasses. Alongside it: a fake news classifier for Filipino news, a multi-tenant farm management platform, a civic map of the city's study spaces, and an educational game made with PLDT and Smart. I also run the Western Visayas junior chapter of the Mechatronics and Robotics Society of the Philippines, which mostly means teaching Arduino to people who have never soldered anything.",
     "I like problems where the software has to survive contact with the physical world.",
   ],
 };
@@ -30,7 +36,9 @@ export const skills = [
       "JavaScript",
       "React",
       "Next.js",
+      "SvelteKit",
       "Tailwind CSS",
+      "Redux Toolkit",
       "HTML",
       "CSS",
     ],
@@ -43,14 +51,25 @@ export const skills = [
       "FastAPI",
       "Flask",
       "PostgreSQL",
+      "Prisma",
       "MongoDB",
       "Supabase",
       "Firebase",
+      "Redis",
     ],
   },
   {
     group: "Hardware and embedded",
-    items: ["Arduino", "Arduino C++", "MQTT", "MICROpi", "MyBlock"],
+    items: [
+      "Arduino",
+      "Arduino C++",
+      "ESP32",
+      "ROS",
+      "MQTT",
+      "MICROpi",
+      "MyBlock",
+      "3D printing",
+    ],
   },
   {
     group: "Also",
@@ -72,13 +91,22 @@ export const skills = [
   },
 ];
 
+export const experience = [
+  {
+    role: "Data and Report Analyst",
+    org: "Innodata Knowledge Services Inc.",
+    note: "Freelance",
+    date: "Aug 2026 – present",
+  },
+];
+
 export const education = [
   {
     school: "West Visayas State University",
     location: "La Paz, Iloilo City",
     detail: "BS Computer Science, major in Artificial Intelligence",
     note: "Magna Cum Laude",
-    date: "Graduating June 2026",
+    date: "June 2026",
   },
   {
     school: "Capiz National High School",
