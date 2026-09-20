@@ -59,7 +59,7 @@
 }
 
 /* The small uppercase label that opens every section and carries every piece
-   of metadata — the one recurring device the layout leans on. */
+   of metadata. The one recurring device the layout leans on. */
 @utility label {
   font-size: 0.6875rem;
   font-weight: 600;

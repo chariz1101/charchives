@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 const nav = [
   { label: "Work", href: "/projects" },
+  { label: "Organising", href: "/organising" },
   { label: "About", href: "/about" },
 ];
 
@@ -13,7 +14,7 @@ export default function SiteNav() {
 
   return (
     <header className="sticky top-0 z-50 border-b-2 border-emerald-100 bg-emerald-700">
-      <div className="mx-auto flex w-full max-w-4xl items-center justify-between gap-6 px-5 py-4 sm:px-8">
+      <div className="mx-auto flex w-full max-w-4xl flex-col gap-1.5 px-5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-8 sm:py-4">
         <Link
           href="/"
           className="text-sm font-semibold tracking-tight text-white hover:text-emerald-100"
@@ -21,7 +22,7 @@ export default function SiteNav() {
           charchives
         </Link>
 
-        <nav className="flex items-center gap-6">
+        <nav className="flex flex-wrap items-center gap-x-5 gap-y-1">
           {nav.map((item) => {
             const current = pathname.startsWith(item.href);
             return (

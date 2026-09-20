@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import ActivityIndex from "@/components/activity-index";
 import ProjectIndex from "@/components/project-index";
 import Section from "@/components/section";
-import StackList from "@/components/stack-list";
-import { events, links, profile } from "@/content/profile";
+import { activities, featuredActivities } from "@/content/organising";
+import { links, profile } from "@/content/profile";
 import { featuredProjects, projects } from "@/content/projects";
 
 export default function HomePage() {
@@ -84,25 +85,24 @@ export default function HomePage() {
         </p>
       </Section>
 
-      <Section title="Organising" meta="MRSP Western Visayas">
-        <ul className="border-t border-rule">
-          {events.map((event) => (
-            <li key={event.name} className="border-b border-rule py-7">
-              <h3 className="text-xl font-semibold text-ink sm:text-2xl">
-                {event.name}
-              </h3>
-              <p className="mt-2 max-w-[62ch] text-[0.95rem] leading-relaxed text-ink-muted">
-                {event.detail}
-              </p>
-              <div className="mt-4">
-                <StackList stack={event.stack} />
-              </div>
-            </li>
-          ))}
-        </ul>
+      <Section
+        title="Organising"
+        meta={`${featuredActivities.length} of ${activities.length}`}
+      >
+        <ActivityIndex activities={featuredActivities} />
+        <p className="pt-6">
+          <Link
+            href="/organising"
+            className="text-[0.95rem] text-ink underline decoration-rule underline-offset-4 hover:decoration-accent"
+          >
+            {`All ${activities.length} organising ${
+              activities.length === 1 ? "entry" : "entries"
+            } →`}
+          </Link>
+        </p>
       </Section>
 
-      <Section id="contact" title="Get in touch" meta="Iloilo City, PH">
+      <Section id="contact" title="Get in touch" meta={profile.location}>
         <p className="max-w-[58ch] text-[0.95rem] leading-relaxed text-ink-muted">
           Email is the surest way to reach me.
         </p>
