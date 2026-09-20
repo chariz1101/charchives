@@ -11,7 +11,10 @@ export type Project = {
   stack: string[];
   live?: string;
   repo?: string;
-  /** Numbers once they exist — users, adoption, time saved. The case study
+  /** Screenshot at public/projects/<slug>.png or .jpg. Drop a file in and set
+   *  this; the index and the case study both render it only when it is set. */
+  image?: string;
+  /** Numbers once they exist: users, adoption, time saved. The case study
    *  renders this section only when a project has one, so an empty field is
    *  better than a vague claim. */
   outcome?: string;
@@ -43,7 +46,7 @@ export const projects: Project[] = [
     summary:
       "A Filipino fake news classifier that shows its reasoning, built ahead of the 2025 midterms.",
     brief:
-      "A Pulse Asia survey found 86% of Filipinos see fake news as a major problem and 65% struggle to tell truth from falsehood. Debunkr is a fake news classifier for Filipino news content, built ahead of the May 2025 midterm elections — and it explains each verdict rather than just returning one.",
+      "A Pulse Asia survey found 86% of Filipinos see fake news as a major problem and 65% struggle to tell truth from falsehood. Debunkr is a fake news classifier for Filipino news content, built ahead of the May 2025 midterm elections, and it explains each verdict rather than just returning one.",
     work: [
       "Ensemble of machine learning models trained on two datasets: a Tagalog-language corpus and an English corpus of Philippine events.",
       "LIME for interpretability, so a user sees which words drove the classification instead of an unexplained label.",
@@ -58,7 +61,7 @@ export const projects: Project[] = [
     name: "FAMAS",
     kind: "Farm management platform",
     summary:
-      "Multi-tenant platform for farm operations — timesheets, tasks, inventory, and accounting under one login.",
+      "Multi-tenant platform for farm operations: timesheets, tasks, inventory, and accounting under one login.",
     brief:
       "A multi-tenant farm management platform: several farms run from one deployment, each keeping its own workers, records, and books, with role-based access deciding what any given person can see.",
     work: [
@@ -75,12 +78,12 @@ export const projects: Project[] = [
     name: "Cyb Robotics",
     kind: "Organisation platform",
     summary:
-      "The robotics org's website, members' portal, and admin dashboard — three audiences, one codebase.",
+      "The robotics org's website, members' portal, and admin dashboard: three audiences, one codebase.",
     brief:
       "The official site for Cyb Robotics, the robotics organisation under the College of Information and Communications Technology at West Visayas State University. It serves three audiences from one deployment: the public, members, and admins.",
     work: [
       "Public site covering club information, officers, members, alumni, projects, and events.",
-      "An unlisted members' portal — no login, a secret slug — holding event documentation, letter and programme templates, branding files, and beginner Arduino guides with sample code.",
+      "An unlisted members' portal, reached by a secret slug with no login, holding event documentation, letter and programme templates, branding files, and beginner Arduino guides with sample code.",
       "A protected admin dashboard for managing officers, members, events, announcements, and the members' file directory.",
       "Supabase for Postgres, auth, and file storage.",
     ],
@@ -99,7 +102,7 @@ export const projects: Project[] = [
     work: [
       "Interactive map explorer over Mapbox GL JS, visualising approved study hubs.",
       "Filtering on the things that decide whether a place is workable: study hub or café, Wi-Fi, charging ports, ambient noise.",
-      "Anonymous reviews tied to session IDs — low friction to leave one, still hard to spam.",
+      "Anonymous reviews tied to session IDs: low friction to leave one, still hard to spam.",
       "A moderation queue: user-submitted locations are verified before they reach the public map.",
     ],
     stack: [
@@ -135,9 +138,9 @@ export const projects: Project[] = [
     name: "SynKapwa",
     kind: "Product experiment",
     summary:
-      "Group project management as an RPG — an AI breaks the syllabus into quests and the team levels up together.",
+      "Group project management as an RPG, where an AI breaks the syllabus into quests and the team levels up together.",
     brief:
-      "A gamified group project platform for students tired of the lone-wolf dynamic in group work. It borrows the Filipino idea of kapwa — shared identity — and puts RPG mechanics on top of academic work so the incentive is collective rather than individual.",
+      "A gamified group project platform for students tired of the lone-wolf dynamic in group work. It borrows the Filipino idea of kapwa, meaning shared identity, and puts RPG mechanics on top of academic work so the incentive is collective rather than individual.",
     work: [
       "A \"Quest Master\" service that parses pasted project requirements into actionable tasks, assigns difficulty tiers, and suggests XP rewards.",
       "Avatars that evolve visually as XP accrues, driven by Redux Toolkit and Framer Motion.",
@@ -168,7 +171,7 @@ export const projects: Project[] = [
     name: "UltraArm Vision",
     kind: "Robotics",
     summary:
-      "Gesture recognition driving a robotic arm — the interactive booth from AI Fest 2026.",
+      "Gesture recognition driving a robotic arm: the interactive booth from AI Fest 2026.",
     brief:
       "Vision-based gesture recognition and motion replication on the UltraArm P340. A camera reads a person's hand, and the arm mirrors it. This was the interactive piece at the robotics chapter's AI Fest 2026 booth.",
     work: [
@@ -185,7 +188,7 @@ export const projects: Project[] = [
     summary:
       "An offline-first speedcubing timer with WCA-legal scrambles and a 3D cube preview.",
     brief:
-      "A speedcubing timer for the browser, built to work with no connection. It generates WCA-legal scrambles, times solves through the spacebar flow any cuber already knows, and keeps every solve locally — with cloud sync as an option, not a requirement.",
+      "A speedcubing timer for the browser, built to work with no connection. It generates WCA-legal scrambles, times solves through the spacebar flow any cuber already knows, and keeps every solve locally, with cloud sync as an option rather than a requirement.",
     work: [
       "Spacebar-driven inspection and timing flow, plus ao5, ao12, ao100, best, worst, and session history.",
       "WCA-legal scramble generation for 2x2 through 7x7 via cubing.js, with a 3D preview of the scrambled cube.",
@@ -215,7 +218,7 @@ export const projects: Project[] = [
     summary:
       "The official site for the D.N.A. of Central Philippine University's College of Nursing.",
     brief:
-      "The official web platform for the Dancing Nurses Association of Central Philippine University's College of Nursing — a digital hub for performances, the member directory, and the organisation's own information.",
+      "The official web platform for the Dancing Nurses Association of Central Philippine University's College of Nursing: a digital hub for performances, the member directory, and the organisation's own information.",
     work: [
       "Landing page carrying the organisation's latest performances and leadership.",
       "Searchable member directory, categorised by year and section, plus an officer and adviser showcase.",
@@ -248,6 +251,7 @@ export const projects: Project[] = [
     stack: ["React", "Vite", "Tailwind CSS"],
     live: "https://imposter-game-cyan.vercel.app/",
     repo: "https://github.com/chariz1101/imposter-game",
+    image: "/projects/imposter.png",
   },
   {
     slug: "appa",
@@ -264,7 +268,7 @@ export const projects: Project[] = [
     slug: "perfect-stack",
     name: "Perfect Stack",
     kind: "Browser game",
-    summary: "A small stacking game in the browser — time the drop, keep the tower alive.",
+    summary: "A small stacking game in the browser: time the drop, keep the tower alive.",
     brief:
       "A simple stacking game built with React: blocks slide across the screen and you tap to drop them, and the overhang is trimmed away each time you miss.",
     work: ["Game loop and scoring in React, no engine."],

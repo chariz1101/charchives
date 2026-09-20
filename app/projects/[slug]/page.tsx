@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { findProject, projects } from "@/content/projects";
@@ -42,6 +43,20 @@ export default async function ProjectPage({ params }: Params) {
           {project.summary}
         </p>
       </header>
+
+      {project.image ? (
+        <div className="mt-10 overflow-hidden rounded-2xl border border-rule bg-surface">
+          <Image
+            src={project.image}
+            alt={`${project.name} screenshot`}
+            width={1600}
+            height={800}
+            sizes="(min-width: 896px) 832px, 100vw"
+            className="h-auto w-full object-cover"
+            loading="eager"
+          />
+        </div>
+      ) : null}
 
       <div className="grid gap-x-12 gap-y-10 py-12 sm:grid-cols-[1fr_13rem] sm:items-start">
         <div className="space-y-10">

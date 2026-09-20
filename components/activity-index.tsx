@@ -1,15 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import StackList from "@/components/stack-list";
-import type { Project } from "@/content/projects";
+import type { Activity } from "@/content/organising";
 
-export default function ProjectIndex({ projects }: { projects: Project[] }) {
+export default function ActivityIndex({
+  activities,
+}: {
+  activities: Activity[];
+}) {
   return (
     <ol className="border-t border-rule">
-      {projects.map((project, i) => (
-        <li key={project.slug} className="border-b border-rule">
+      {activities.map((activity, i) => (
+        <li key={activity.slug} className="border-b border-rule">
           <Link
-            href={`/projects/${project.slug}`}
+            href={`/organising/${activity.slug}`}
             className="group grid gap-x-8 gap-y-3 py-7 sm:grid-cols-[3rem_1fr]"
           >
             <span className="label pt-1.5 text-accent">
@@ -19,20 +23,24 @@ export default function ProjectIndex({ projects }: { projects: Project[] }) {
             <div>
               <div className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-1">
                 <h3 className="text-xl font-semibold text-ink underline decoration-transparent decoration-2 underline-offset-[6px] group-hover:decoration-accent-line">
-                  {project.name}
+                  {activity.name}
                 </h3>
-                <span className="label text-ink-faint">{project.kind}</span>
+                <span className="label text-ink-faint">{activity.kind}</span>
               </div>
 
-              <p className="mt-2 max-w-[62ch] text-[0.9rem] leading-relaxed text-ink-muted">
-                {project.summary}
+              <p className="mt-1 text-[0.85rem] text-ink-faint">
+                {activity.role}, {activity.org} · {activity.date}
               </p>
 
-              {project.image ? (
+              <p className="mt-2 max-w-[62ch] text-[0.9rem] leading-relaxed text-ink-muted">
+                {activity.summary}
+              </p>
+
+              {activity.image ? (
                 <div className="mt-4 overflow-hidden rounded-xl border border-rule bg-surface">
                   <Image
-                    src={project.image}
-                    alt={`${project.name} screenshot`}
+                    src={activity.image}
+                    alt={`${activity.name} photo`}
                     width={1280}
                     height={640}
                     sizes="(min-width: 896px) 780px, 100vw"
@@ -41,9 +49,11 @@ export default function ProjectIndex({ projects }: { projects: Project[] }) {
                 </div>
               ) : null}
 
-              <div className="mt-4">
-                <StackList stack={project.stack} />
-              </div>
+              {activity.tags?.length ? (
+                <div className="mt-4">
+                  <StackList stack={activity.tags} />
+                </div>
+              ) : null}
             </div>
           </Link>
         </li>
