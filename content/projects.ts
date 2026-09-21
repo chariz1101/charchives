@@ -115,6 +115,7 @@ export const projects: Project[] = [
     ],
     live: "https://tuon-ilo.vercel.app/",
     repo: "https://github.com/chariz1101/tuon-ilo",
+    image: "/projects/tuon-ilo.jpg",
     featured: true,
   },
   {
@@ -234,6 +235,7 @@ export const projects: Project[] = [
     ],
     live: "https://dna-official-page.vercel.app/",
     repo: "https://github.com/chariz1101/dna-page",
+    image: "/projects/dancing-nurses-association.jpg",
   },
   {
     slug: "imposter",
@@ -275,6 +277,7 @@ export const projects: Project[] = [
     stack: ["React"],
     live: "https://perfect-stack.vercel.app/",
     repo: "https://github.com/chariz1101/perfect-stack",
+    image: "/projects/perfect-stack.jpg",
   },
 ];
 
