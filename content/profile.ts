@@ -3,7 +3,7 @@ export const profile = {
   role: "Full-stack developer",
   location: "Roxas City, Philippines",
   current: {
-    role: "Data and Report Analyst",
+    role: "AI Content Evaluator",
     org: "Innodata Knowledge Services Inc.",
     arrangement: "Freelance",
     since: "August 2026",
@@ -93,7 +93,7 @@ export const skills = [
 
 export const experience = [
   {
-    role: "Data and Report Analyst",
+    role: "AI Content Evaluator",
     org: "Innodata Knowledge Services Inc.",
     note: "Freelance",
     date: "Aug 2026 – present",
