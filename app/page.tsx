@@ -70,6 +70,15 @@ const events = [
     stack: ["Arduino", "Arduino C++", "Python", "MICROpi"],
     link: "",
   },
+
+    {
+    emoji: "",
+    name: "Regional Science and Technology Week 2026",
+    tag: "Exhibitor",
+    desc: "We had an exhibition for the Makeblock Ultimate 2.0 kits along with ESP8266-powered rovers.",
+    stack: ["Arduino", "Arduino C++", "Python", "MICROpi, ESP8266, RemoteXY"],
+    link: "",
+  },
   // {
   //   emoji: "🌾",
   //   name: "FAMAS",
