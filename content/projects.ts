@@ -23,6 +23,27 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "panelly",
+    name: "Panelly",
+    kind: "Browser video tool",
+    summary:
+      "A story composer that encodes a 1080x1920 MP4 in the browser, with nothing uploaded anywhere.",
+    brief:
+      "Pick a frame layout, drop a photo or a video into each panel, and export one 1080x1920 MP4 ready for Instagram or Facebook Stories. There is no install, no account, and no upload: the encoding happens on the device, so the files never leave it.",
+    work: [
+      "Layouts of 2, 3, or 4 stacked panels, mixing photos and videos freely, with drag to reposition and pinch or scroll to zoom inside each panel.",
+      "Client-side H.264 export through WebCodecs and Mediabunny, plus a PNG path when every panel is a photo.",
+      "A fallback to MediaRecorder on browsers without WebCodecs, and a chain of encoder fallbacks: sideways 1920x1080 with a rotation flag when a browser refuses portrait H.264, then 720x1280 or 540x960 as a last resort.",
+      "Share straight to Instagram on mobile through the Web Share API.",
+      "Mobile-first, targeting mid-range Android Chrome and Safari 16.4 or newer.",
+    ],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Zustand", "WebCodecs", "Vitest"],
+    live: "https://panelly-official.vercel.app",
+    repo: "https://github.com/chariz1101/panelly",
+    image: "/projects/panelly.jpg",
+    featured: true,
+  },
+  {
     slug: "smartsense",
     name: "SmartSense",
     kind: "Undergraduate thesis",
@@ -57,6 +78,27 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "better-roxas",
+    name: "BetterRoxas",
+    kind: "Civic portal",
+    summary:
+      "An open-source government portal for Roxas City, built with the BetterGov.ph community.",
+    brief:
+      "A community-led, open-source portal that makes the government of the City of Roxas, Capiz easier to use. It is the city-focused arm of BetterGov.ph, adapted to what Roxas City residents actually need, and it is built to be forked by any local government unit in the Philippines.",
+    work: [
+      "Public services directory covering requirements, fees, and step-by-step processes.",
+      "Legislative portal for the ordinances, resolutions, and executive orders of the Sangguniang Panlungsod.",
+      "Transparency dashboard for financial data, procurement bids, and infrastructure projects.",
+      "Government directory for city departments and officials, with English and Filipino translations.",
+      "Configuration-driven so another LGU can fork it and swap in their own data.",
+    ],
+    stack: ["Next.js", "TypeScript", "Tailwind CSS"],
+    live: "https://betterwesternvisayas.github.io",
+    repo: "https://github.com/BetterWesternVisayas/betterwesternvisayas.github.io",
+    image: "/projects/better-roxas.jpg",
+    featured: true,
+  },
+  {
     slug: "famas",
     name: "FAMAS",
     kind: "Farm management platform",
@@ -88,7 +130,9 @@ export const projects: Project[] = [
       "Supabase for Postgres, auth, and file storage.",
     ],
     stack: ["Next.js", "Tailwind CSS", "Supabase", "PostgreSQL"],
+    live: "https://cyb-robotics-website.vercel.app",
     repo: "https://github.com/chariz1101/cyb-robotics-website",
+    image: "/projects/cyb-robotics.jpg",
     featured: true,
   },
   {
@@ -116,7 +160,6 @@ export const projects: Project[] = [
     live: "https://tuon-ilo.vercel.app/",
     repo: "https://github.com/chariz1101/tuon-ilo",
     image: "/projects/tuon-ilo.jpg",
-    featured: true,
   },
   {
     slug: "tuon-ta",
@@ -132,7 +175,26 @@ export const projects: Project[] = [
     ],
     stack: ["Unity", "C#"],
     live: "https://apkpure.com/tuon-ta/com.wvsu.com.mobile2D",
-    featured: true,
+  },
+  {
+    slug: "mrsp-live-scoreboard",
+    name: "MRSP Live Scoreboard",
+    kind: "Event software",
+    summary:
+      "Live scoring for the chapter's robotics competitions, run from a PIN-gated dashboard.",
+    brief:
+      "Competition scoring for the MRSP Western Visayas Junior Chapter. A public board updates itself every three seconds while facilitators enter runs from a separate dashboard, so the audience sees the standings change without anyone touching the projector.",
+    work: [
+      "Public scoreboard that polls every three seconds and is safe to display to a room.",
+      "PIN-gated admin dashboard for facilitators to record runs.",
+      "Scoring for the Robotic Arm Tank Challenge: unlimited attempts, cumulative points, time penalties folded into the raw time before banding, and a point even for a run that does not finish.",
+      "Scoring for the Pop the Balloon Challenge, plus a combined overall champion.",
+      "All scoring rules live in one module, so changing the numbers updates both pages.",
+    ],
+    stack: ["Next.js", "Neon Postgres", "Vercel"],
+    live: "https://mrsp-live-scoreboard.vercel.app",
+    repo: "https://github.com/chariz1101/mrsp-live-scoreboard",
+    image: "/projects/mrsp-scoreboard.jpg",
   },
   {
     slug: "synkapwa",
@@ -199,6 +261,7 @@ export const projects: Project[] = [
     ],
     stack: ["React", "Tailwind CSS", "Zustand", "cubing.js", "Dexie", "Supabase"],
     repo: "https://github.com/chariz1101/cube-timer",
+    image: "/projects/cubetimer.jpg",
   },
   {
     slug: "cybsync",
