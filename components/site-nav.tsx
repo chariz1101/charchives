@@ -18,7 +18,7 @@ export default function SiteNav() {
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-8">
         <Link
           href="/"
-          className="group flex items-center gap-2.5 font-mono text-sm font-semibold tracking-tight text-ink"
+          className="group flex items-center gap-2.5 font-label text-sm font-semibold tracking-tight text-ink"
         >
           <Gear
             teeth={10}
@@ -39,12 +39,12 @@ export default function SiteNav() {
                 key={item.href}
                 href={item.href}
                 aria-current={current ? "page" : undefined}
-                className={`group font-mono text-[12px] tracking-wide uppercase transition-colors ${
+                className={`group font-label text-[12px] tracking-wide uppercase transition-colors ${
                   current ? "text-ink" : "text-ink-faint hover:text-ink"
                 }`}
               >
                 <span
-                  className={current ? "text-accent" : "text-signal/60 group-hover:text-signal"}
+                  className={`mr-1.5 ${current ? "text-accent" : "text-signal/60 group-hover:text-signal"}`}
                 >
                   {item.code}.
                 </span>
@@ -54,7 +54,7 @@ export default function SiteNav() {
           })}
           <Link
             href="/#contact"
-            className="rounded-sm border border-accent-line bg-accent-soft px-3 py-1 font-mono text-[12px] tracking-wide text-accent-strong uppercase transition-colors hover:border-accent hover:bg-accent hover:text-bg"
+            className="rounded-sm border border-accent-line bg-accent-soft px-3 py-1 font-label text-[12px] tracking-wide text-accent-strong uppercase transition-colors hover:border-accent hover:bg-accent hover:text-bg"
           >
             Contact
           </Link>

@@ -44,7 +44,7 @@
   --color-signal-line: var(--signal-line);
 
   --font-sans: var(--font-grotesk), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-mono-face), ui-monospace, SFMono-Regular, monospace;
+  --font-label: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer base {
@@ -80,9 +80,9 @@
   }
 }
 
-/* The mono uppercase label that carries every piece of metadata. */
+/* The uppercase label that carries every piece of metadata. */
 @utility label {
-  font-family: var(--font-mono);
+  font-family: var(--font-label);
   font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.14em;

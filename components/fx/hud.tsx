@@ -17,7 +17,7 @@ export default function Hud() {
           style={{ transform: "scaleY(var(--scroll))" }}
         />
       </div>
-      <span className="font-mono text-[11px] text-signal tabular-nums">
+      <span className="font-label text-[11px] text-signal tabular-nums">
         <span data-readout>000</span>
       </span>
     </div>

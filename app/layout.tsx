@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { JetBrains_Mono, Space_Grotesk } from "next/font/google";
+import { Poppins, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import Backdrop from "@/components/fx/backdrop";
 import Hud from "@/components/fx/hud";
@@ -16,10 +16,10 @@ const grotesk = Space_Grotesk({
   display: "swap",
 });
 
-const mono = JetBrains_Mono({
+const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
-  variable: "--font-mono-face",
+  variable: "--font-poppins",
   display: "swap",
 });
 
@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${grotesk.variable} ${mono.variable}`}>
+    <html lang="en" className={`${grotesk.variable} ${poppins.variable}`}>
       <body className="flex min-h-screen flex-col">
         <Backdrop />
         <SiteNav />

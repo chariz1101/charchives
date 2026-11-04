@@ -113,7 +113,7 @@ export default function CaseFile({
                       style={{ "--i": i } as React.CSSProperties}
                       className="panel flex gap-4 rounded-sm p-4"
                     >
-                      <span className="font-mono text-sm font-semibold text-accent">
+                      <span className="font-label text-sm font-semibold text-accent">
                         {String(i + 1).padStart(2, "0")}
                       </span>
                       <span className="text-[0.96rem] leading-relaxed text-ink-muted">

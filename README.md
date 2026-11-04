@@ -86,8 +86,8 @@ public/organising/        event photos
 
 A robotics and mechatronics control room: graphite panels on a blueprint
 grid, servo orange (`--accent`) for anything that moves or can be clicked,
-sensor cyan (`--signal`) for readouts. Space Grotesk for text and JetBrains
-Mono for labels, both self-hosted through `next/font`.
+sensor cyan (`--signal`) for readouts. Space Grotesk for text and Poppins
+for labels, both self-hosted through `next/font`.
 
 Colours live as CSS custom properties on `:root` in `app/globals.css` and are
 exposed to Tailwind through `@theme inline`, so changing the accent is one

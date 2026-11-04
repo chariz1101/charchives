@@ -14,7 +14,7 @@ export default function StackList({
       {stack.map((tool) => (
         <li
           key={tool}
-          className={`rounded-sm border px-2 py-0.5 font-mono text-[11px] ${colours}`}
+          className={`rounded-sm border px-2 py-0.5 font-label text-[11px] ${colours}`}
         >
           {tool}
         </li>

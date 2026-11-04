@@ -62,7 +62,7 @@ export default function HomePage() {
             </h1>
 
             <p
-              className="mt-5 font-mono text-[0.9rem] text-ink-muted"
+              className="mt-5 font-label text-[0.9rem] text-ink-muted"
               data-reveal
               style={{ "--i": 1 } as React.CSSProperties}
             >
@@ -113,13 +113,13 @@ export default function HomePage() {
             >
               <a
                 href={`mailto:${links.email}`}
-                className="rounded-sm bg-accent px-5 py-2.5 font-mono text-[13px] font-semibold tracking-wide text-bg uppercase transition hover:bg-accent-strong hover:shadow-[0_0_30px_rgb(255_122_26/0.45)]"
+                className="rounded-sm bg-accent px-5 py-2.5 font-label text-[13px] font-semibold tracking-wide text-bg uppercase transition hover:bg-accent-strong hover:shadow-[0_0_30px_rgb(255_122_26/0.45)]"
               >
                 Send a signal
               </a>
               <Link
                 href="/projects"
-                className="rounded-sm border border-rule-strong bg-panel/70 px-5 py-2.5 font-mono text-[13px] tracking-wide text-ink uppercase transition hover:border-signal hover:text-signal"
+                className="rounded-sm border border-rule-strong bg-panel/70 px-5 py-2.5 font-label text-[13px] tracking-wide text-ink uppercase transition hover:border-signal hover:text-signal"
               >
                 View work
               </Link>
@@ -127,7 +127,7 @@ export default function HomePage() {
                 href={links.resume}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-sm border border-rule-strong bg-panel/70 px-5 py-2.5 font-mono text-[13px] tracking-wide text-ink uppercase transition hover:border-signal hover:text-signal"
+                className="rounded-sm border border-rule-strong bg-panel/70 px-5 py-2.5 font-label text-[13px] tracking-wide text-ink uppercase transition hover:border-signal hover:text-signal"
               >
                 Résumé ↗
               </a>
@@ -135,7 +135,7 @@ export default function HomePage() {
                 href={links.github}
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-sm border border-rule-strong bg-panel/70 px-5 py-2.5 font-mono text-[13px] tracking-wide text-ink uppercase transition hover:border-signal hover:text-signal"
+                className="rounded-sm border border-rule-strong bg-panel/70 px-5 py-2.5 font-label text-[13px] tracking-wide text-ink uppercase transition hover:border-signal hover:text-signal"
               >
                 GitHub ↗
               </a>
@@ -167,7 +167,7 @@ export default function HomePage() {
                 <p className="label text-ink-faint">{item.label}</p>
                 <p className="mt-3 flex items-baseline gap-2">
                   <span
-                    className="font-mono text-4xl font-semibold text-ink tabular-nums"
+                    className="font-label text-4xl font-semibold text-ink tabular-nums"
                     data-count={item.value}
                   >
                     {String(item.value).padStart(2, "0")}
@@ -251,7 +251,7 @@ export default function HomePage() {
                     href={link.href}
                     target={link.href.startsWith("http") ? "_blank" : undefined}
                     rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                    className="inline-block rounded-sm border border-rule-strong px-4 py-2 font-mono text-[12px] tracking-wide text-ink-muted transition hover:border-signal hover:text-signal"
+                    className="inline-block rounded-sm border border-rule-strong px-4 py-2 font-label text-[12px] tracking-wide text-ink-muted transition hover:border-signal hover:text-signal"
                   >
                     {link.label}
                   </a>

@@ -22,7 +22,7 @@ export default function SiteFooter() {
         <nav className="flex flex-wrap gap-5">
           <a
             href={`mailto:${links.email}`}
-            className="font-mono text-[12px] tracking-wide text-ink-muted uppercase hover:text-accent"
+            className="font-label text-[12px] tracking-wide text-ink-muted uppercase hover:text-accent"
           >
             Email
           </a>
@@ -32,7 +32,7 @@ export default function SiteFooter() {
               href={link.href}
               target="_blank"
               rel="noreferrer"
-              className="font-mono text-[12px] tracking-wide text-ink-muted uppercase hover:text-accent"
+              className="font-label text-[12px] tracking-wide text-ink-muted uppercase hover:text-accent"
             >
               {link.label}
             </a>

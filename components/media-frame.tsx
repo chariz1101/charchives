@@ -68,7 +68,7 @@ export default function MediaFrame({
             turns={-3.3}
             className="absolute right-[6.6rem] -bottom-6 h-24 w-24 text-accent opacity-25"
           />
-          <span className="font-mono text-6xl font-semibold tracking-tighter text-ink/90 sm:text-7xl">
+          <span className="font-label text-6xl font-semibold tracking-tighter text-ink/90 sm:text-7xl">
             {initials}
           </span>
           <span className="label absolute top-3 left-3 text-signal">

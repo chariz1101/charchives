@@ -47,7 +47,7 @@ export default function ProjectIndex({
 
                 <div data-reveal style={{ "--i": 1 } as React.CSSProperties}>
                   <p className="label flex items-center gap-3 text-ink-faint">
-                    <span className="font-mono text-2xl font-semibold tracking-normal text-accent">
+                    <span className="font-label text-2xl font-semibold tracking-normal text-accent">
                       {num(i)}
                     </span>
                     <span className="h-px w-8 bg-rule-strong" />
@@ -94,7 +94,7 @@ export default function ProjectIndex({
               sizes="(min-width: 1152px) 520px, (min-width: 768px) 45vw, 100vw"
             />
             <div className="mt-5 flex items-baseline justify-between gap-4">
-              <span className="font-mono text-sm font-semibold text-accent">
+              <span className="font-label text-sm font-semibold text-accent">
                 {num(i)}
               </span>
               <span className="label text-right text-ink-faint">{project.kind}</span>

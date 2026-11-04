@@ -10,7 +10,8 @@ type Pose = {
   wrist: number;
   roll: number;
   grip: number;
-  /** Where the arm stands in the scene, so it can step aside for content. */
+  /** Horizontal screen position: 0 centres the arm, 0.25 puts it at 75% of
+   *  the width. Applied as a camera offset so the arm keeps its framing. */
   x: number;
   /** Camera orbit around the arm, in radians. */
   orbit: number;
@@ -19,11 +20,11 @@ type Pose = {
 
 // One pose per stop down the home page; scroll blends between them.
 const POSES: Pose[] = [
-  { yaw: 0.6, shoulder: 0.35, elbow: 1.05, wrist: 0.75, roll: 0, grip: 1, x: 3.3, orbit: 0.55, camY: 3.8 },
-  { yaw: -0.5, shoulder: -0.55, elbow: 1.55, wrist: 0.9, roll: 1.2, grip: 0.2, x: 3.6, orbit: 0.9, camY: 4.6 },
-  { yaw: 1.6, shoulder: 0.1, elbow: 0.4, wrist: -0.3, roll: 2.6, grip: 0.9, x: -3.6, orbit: 0.2, camY: 3.2 },
-  { yaw: -1.2, shoulder: 0.75, elbow: 1.35, wrist: 1.1, roll: 3.6, grip: 0.1, x: 3.6, orbit: 1.15, camY: 5.2 },
-  { yaw: 0.2, shoulder: -0.1, elbow: 0.25, wrist: 0.15, roll: 4.8, grip: 1, x: 0, orbit: 0.6, camY: 3.9 },
+  { yaw: -0.15, shoulder: 0.2, elbow: 1.15, wrist: 0.8, roll: 0, grip: 1, x: 0.27, orbit: 0.55, camY: 3.8 },
+  { yaw: -0.5, shoulder: -0.55, elbow: 1.55, wrist: 0.9, roll: 1.2, grip: 0.2, x: 0.27, orbit: 0.9, camY: 4.6 },
+  { yaw: 1.6, shoulder: 0.1, elbow: 0.4, wrist: -0.3, roll: 2.6, grip: 0.9, x: 0.25, orbit: 0.2, camY: 3.2 },
+  { yaw: -1.2, shoulder: 0.75, elbow: 1.35, wrist: 1.1, roll: 3.6, grip: 0.1, x: 0.27, orbit: 1.15, camY: 5.2 },
+  { yaw: 0.2, shoulder: -0.1, elbow: 0.25, wrist: 0.15, roll: 4.8, grip: 1, x: 0.24, orbit: 0.6, camY: 3.9 },
 ];
 
 const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
@@ -262,17 +263,20 @@ export default function RobotArm() {
       const open = 0.06 + p.grip * 0.16;
       for (const { f, side } of fingers) f.position.x = side * open;
 
-      rig.position.x = wide ? p.x : 0;
       rig.position.z = wide ? 0 : -1.5;
+      // Shift the rendered frame, not the arm, so it sits right of the text.
+      const w = renderer.domElement.width;
+      const h = renderer.domElement.height;
+      camera.setViewOffset(w, h, -w * (wide ? p.x : 0.2), 0, w, h);
 
       const radius = wide ? 13.5 : 14;
       const orbit = p.orbit + pointer.x * 0.12;
       camera.position.set(
-        rig.position.x + Math.sin(orbit) * radius,
+        Math.sin(orbit) * radius,
         p.camY - pointer.y * 0.4,
         Math.cos(orbit) * radius,
       );
-      camera.lookAt(rig.position.x * 0.55, 2.1, 0);
+      camera.lookAt(0, 2.1, 0);
 
       const wave = (t * 0.45) % 1;
       pulse.scale.setScalar(1 + wave * 2.4);
@@ -282,7 +286,7 @@ export default function RobotArm() {
 
       // Step back once the hero is gone so text in front stays readable.
       const hero = Math.min(window.scrollY / window.innerHeight, 1);
-      el.style.opacity = String(wide ? 1 - hero * 0.55 : 0.4 - hero * 0.2);
+      el.style.opacity = String(wide ? 1 - hero * 0.72 : 0.4 - hero * 0.22);
 
       renderer.render(scene, camera);
     };

@@ -48,7 +48,7 @@ function TimelineItem({
           <h3 className="text-lg font-semibold text-ink">{title}</h3>
           <p className="mt-1 max-w-[60ch] text-[0.95rem] text-ink-muted">{sub}</p>
           {note ? (
-            <span className="mt-3 inline-block rounded-sm border border-signal-line bg-signal-soft px-2 py-0.5 font-mono text-[11px] text-signal">
+            <span className="mt-3 inline-block rounded-sm border border-signal-line bg-signal-soft px-2 py-0.5 font-label text-[11px] text-signal">
               {note}
             </span>
           ) : null}
@@ -103,7 +103,7 @@ export default function AboutPage() {
           <p className="mt-8" data-reveal>
             <a
               href={`mailto:${links.email}`}
-              className="font-mono text-[0.95rem] text-accent underline decoration-accent-line underline-offset-4 hover:decoration-accent"
+              className="font-label text-[0.95rem] text-accent underline decoration-accent-line underline-offset-4 hover:decoration-accent"
             >
               {links.email}
             </a>
@@ -206,7 +206,7 @@ export default function AboutPage() {
               className="card-3d panel brackets flex h-full flex-col rounded-sm p-5"
             >
               <div className="flex items-center justify-between">
-                <span className="font-mono text-sm font-semibold text-accent">
+                <span className="font-label text-sm font-semibold text-accent">
                   #{String(i + 1).padStart(2, "0")}
                 </span>
                 <span className="label text-ink-faint">{award.year}</span>
