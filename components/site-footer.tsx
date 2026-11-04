@@ -8,15 +8,21 @@ const elsewhere = [
 
 export default function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-rule">
-      <div className="mx-auto flex w-full max-w-4xl flex-col gap-3 px-5 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-        <p className="text-[13px] text-ink-faint">
-          {profile.name} · {profile.location}
-        </p>
+    <footer className="mt-32 border-t border-rule bg-bg/80 backdrop-blur">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-5 py-8 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <div>
+          <p className="label flex items-center gap-2 text-signal">
+            <span className="pulse-dot inline-block h-1.5 w-1.5 rounded-full bg-signal" />
+            End of transmission
+          </p>
+          <p className="mt-2 text-[13px] text-ink-faint">
+            {profile.name} · {profile.location}
+          </p>
+        </div>
         <nav className="flex flex-wrap gap-5">
           <a
             href={`mailto:${links.email}`}
-            className="text-[13px] font-medium text-ink-muted hover:text-accent"
+            className="font-mono text-[12px] tracking-wide text-ink-muted uppercase hover:text-accent"
           >
             Email
           </a>
@@ -26,7 +32,7 @@ export default function SiteFooter() {
               href={link.href}
               target="_blank"
               rel="noreferrer"
-              className="text-[13px] font-medium text-ink-muted hover:text-accent"
+              className="font-mono text-[12px] tracking-wide text-ink-muted uppercase hover:text-accent"
             >
               {link.label}
             </a>

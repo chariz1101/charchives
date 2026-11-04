@@ -2,9 +2,9 @@
 
 Portfolio of Chariz Dianne Falco, [chariz1101](https://github.com/chariz1101).
 
-Next.js App Router, Tailwind CSS v4, no UI library. Every page is a Server
-Component and prerenders to static HTML; the only client-side JavaScript is
-the nav, which needs the current pathname.
+Next.js App Router, Tailwind CSS v4 and three.js, no UI library. Every page
+is a Server Component and prerenders to static HTML; client-side JavaScript is
+limited to the nav, the scroll engine, and the 3D arm on the home page.
 
 ## Running it
 
@@ -58,15 +58,25 @@ in with what the project actually did (users, adoption, time saved) and an
 
 ```
 app/
-  layout.tsx              fonts, metadata, nav, footer
-  page.tsx                home: intro, selected work, organising, contact
+  layout.tsx              fonts, metadata, nav, footer, backdrop, scroll engine
+  page.tsx                home: hero + 3D arm, telemetry, builds, system stack,
+                          field operations, contact
   projects/page.tsx       the full project index
-  projects/[slug]/        one case study per project, prerendered
+  projects/[slug]/        one case file per project, prerendered
   organising/page.tsx     the full organising index
-  organising/[slug]/      one page per event, prerendered
-  about/page.tsx          bio, experience, education, skills, leadership
-  globals.css             colour and type tokens
-components/               nav, footer, section header, project and activity index
+  organising/[slug]/      one case file per event, prerendered
+  about/page.tsx          bio, experience, education, skills, leadership, awards
+  globals.css             colour and type tokens, and every motion rule
+components/
+  fx/scroll-fx.tsx        the one scroll engine (see Motion below)
+  fx/robot-arm.tsx        the three.js robotic arm behind the home page
+  fx/gear.tsx             generated SVG gears that turn with the scroll
+  fx/backdrop.tsx         blueprint grid and background gears
+  fx/hud.tsx              the Z-axis scroll gauge on wide screens
+  case-file.tsx           shared detail page for projects and events
+  system-stack.tsx        skills as an exploding stack of circuit plates
+  media-frame.tsx         screenshot frame, or a schematic plate when no image
+  ...                     nav, footer, section header, project and activity index
 content/                  projects.ts, organising.ts, profile.ts
 public/projects/          project screenshots
 public/organising/        event photos
@@ -74,11 +84,32 @@ public/organising/        event photos
 
 ## Design
 
-Poppins throughout, self-hosted through `next/font` rather than a
-render-blocking Google Fonts import. Emerald on warm off-white, with zinc for
-text. Projects are a numbered index rather than a card grid; the accent carries
-the index numbers, the stack chips, and links.
+A robotics and mechatronics control room: graphite panels on a blueprint
+grid, servo orange (`--accent`) for anything that moves or can be clicked,
+sensor cyan (`--signal`) for readouts. Space Grotesk for text and JetBrains
+Mono for labels, both self-hosted through `next/font`.
 
 Colours live as CSS custom properties on `:root` in `app/globals.css` and are
 exposed to Tailwind through `@theme inline`, so changing the accent is one
 line.
+
+## Motion
+
+Pages stay Server Components. All scroll motion comes from one small client
+component, `components/fx/scroll-fx.tsx`, which writes attributes and CSS
+variables; `globals.css` turns them into 3D transforms.
+
+| Put this on an element | And it                                                  |
+| ---------------------- | ------------------------------------------------------- |
+| `data-reveal`          | tilts up out of depth as it enters, folds away as it leaves. Variants: `left`, `right`, `zoom`, `flip`, `fade`; `once` stays put |
+| `style={{"--i": n}}`   | staggers a reveal by `n × 70ms`                         |
+| `data-depth`           | receives `--p` (−1 above centre … +1 below) and `--pv` (1 when centred), used by `.tilt-media`, `.parallax` and the skill stack |
+| `data-count={n}`       | counts up to `n` each time it is revealed               |
+
+The home page adds a three.js robotic arm in a fixed canvas. Scroll blends it
+through the poses in `POSES` (`components/fx/robot-arm.tsx`) and the pointer
+nudges the turret and camera. It pauses in background tabs, and when WebGL is
+missing the page simply renders without it.
+
+Everything respects `prefers-reduced-motion`: reveals show immediately,
+tilts and parallax switch off, and the arm holds still.

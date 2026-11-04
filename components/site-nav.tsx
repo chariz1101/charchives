@@ -2,27 +2,36 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Gear from "@/components/fx/gear";
 
 const nav = [
-  { label: "Work", href: "/projects" },
-  { label: "Organising", href: "/organising" },
-  { label: "About", href: "/about" },
+  { label: "Work", href: "/projects", code: "01" },
+  { label: "Organising", href: "/organising", code: "02" },
+  { label: "About", href: "/about", code: "03" },
 ];
 
 export default function SiteNav() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-emerald-100 bg-emerald-700">
-      <div className="mx-auto flex w-full max-w-4xl flex-col gap-1.5 px-5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-8 sm:py-4">
+    <header className="sticky top-0 z-50 border-b border-rule bg-bg/75 backdrop-blur-md">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-5 py-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6 sm:px-8">
         <Link
           href="/"
-          className="text-sm font-semibold tracking-tight text-white hover:text-emerald-100"
+          className="group flex items-center gap-2.5 font-mono text-sm font-semibold tracking-tight text-ink"
         >
-          charchives
+          <Gear
+            teeth={10}
+            turns={4}
+            spokes={false}
+            className="h-5 w-5 text-accent transition-colors group-hover:text-signal"
+          />
+          <span>
+            charchives<span className="text-accent">_</span>
+          </span>
         </Link>
 
-        <nav className="flex flex-wrap items-center gap-x-5 gap-y-1">
+        <nav className="flex flex-wrap items-center gap-x-6 gap-y-1">
           {nav.map((item) => {
             const current = pathname.startsWith(item.href);
             return (
@@ -30,24 +39,33 @@ export default function SiteNav() {
                 key={item.href}
                 href={item.href}
                 aria-current={current ? "page" : undefined}
-                className={`text-[13px] font-medium ${
-                  current
-                    ? "text-white underline decoration-emerald-300 decoration-2 underline-offset-[6px]"
-                    : "text-emerald-100 hover:text-white"
+                className={`group font-mono text-[12px] tracking-wide uppercase transition-colors ${
+                  current ? "text-ink" : "text-ink-faint hover:text-ink"
                 }`}
               >
+                <span
+                  className={current ? "text-accent" : "text-signal/60 group-hover:text-signal"}
+                >
+                  {item.code}.
+                </span>
                 {item.label}
               </Link>
             );
           })}
           <Link
             href="/#contact"
-            className="text-[13px] font-medium text-emerald-100 hover:text-white"
+            className="rounded-sm border border-accent-line bg-accent-soft px-3 py-1 font-mono text-[12px] tracking-wide text-accent-strong uppercase transition-colors hover:border-accent hover:bg-accent hover:text-bg"
           >
             Contact
           </Link>
         </nav>
       </div>
+      {/* Scroll progress, read straight from --scroll. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-[-1px] h-px origin-left bg-gradient-to-r from-signal via-accent to-accent"
+        style={{ transform: "scaleX(var(--scroll))" }}
+      />
     </header>
   );
 }
