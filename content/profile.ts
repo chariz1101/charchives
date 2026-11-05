@@ -96,7 +96,7 @@ export const experience = [
     role: "AI Content Evaluator",
     org: "Innodata Knowledge Services Inc.",
     note: "Freelance",
-    date: "Aug 2026 – present",
+    date: "Aug 2026 to present",
   },
 ];
 
@@ -121,32 +121,32 @@ export const organisations = [
   {
     role: "President",
     org: "Mechatronics and Robotics Society of the Philippines, Western Visayas Junior Chapter",
-    date: "Nov 2025 – present",
+    date: "Nov 2025 to present",
   },
   {
     role: "Assistant Treasurer",
     org: "University Senior Curriculum Council",
-    date: "Nov 2025 – present",
+    date: "Nov 2025 to present",
   },
   {
     role: "Student Ambassador",
     org: "Samsung Galaxy Campus",
-    date: "2023 – 2025",
+    date: "2023 to 2025",
   },
   {
     role: "Secretary",
     org: "Capiz Division Federation of Supreme Student Governments",
-    date: "2021 – 2022",
+    date: "2021 to 2022",
   },
   {
     role: "President",
     org: "Capiz NHS Supreme Student Government",
-    date: "2021 – 2022",
+    date: "2021 to 2022",
   },
   {
     role: "Editor-in-Chief",
     org: "Capiz NHS The Script Publication",
-    date: "2021 – 2022",
+    date: "2021 to 2022",
   },
 ];
 
@@ -169,7 +169,7 @@ export const awards = [
   {
     title: "Top 10 and Best Elevator Pitch (Region VI), Champion (Capiz)",
     event: "goIT TCS Digital Innovation Program",
-    year: "2021–2022",
+    year: "2021 to 2022",
   },
   {
     title: "Best Presenter and 2nd Place, Robotics & Intelligent Machines",
