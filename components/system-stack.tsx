@@ -62,13 +62,13 @@ export default function SystemStack() {
         </div>
       </div>
 
-      <dl className="space-y-3">
+      <dl className="border-t border-dashed border-rule-strong">
         {skills.map((group, i) => (
           <div
             key={group.group}
             data-reveal="right"
             style={{ "--i": i } as React.CSSProperties}
-            className="panel rounded-sm p-4 sm:grid sm:grid-cols-[9.5rem_1fr] sm:gap-6"
+            className="border-b border-dashed border-rule-strong py-5 sm:grid sm:grid-cols-[9.5rem_1fr] sm:gap-6"
           >
             <dt className="label mb-3 flex items-center gap-2 text-ink-faint sm:mb-0 sm:pt-1">
               <span className={i % 2 ? "text-accent" : "text-signal"}>

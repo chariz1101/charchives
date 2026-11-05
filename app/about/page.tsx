@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Gear from "@/components/fx/gear";
 import Section from "@/components/section";
+import { Hexagon, Orbit } from "@/components/shapes";
 import SystemStack from "@/components/system-stack";
 import {
   awards,
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   description: profile.about[0],
 };
 
-/** One row of a vertical timeline: a node on the rail and a panel beside it. */
+/** One row of a vertical timeline: a node on the rail and the entry beside it. */
 function TimelineItem({
   i,
   title,
@@ -35,15 +36,15 @@ function TimelineItem({
 }) {
   return (
     <li
-      className="relative pb-5 pl-10 last:pb-0"
+      className="relative pb-6 pl-10 last:pb-0 [&:last-child>div]:border-b-0"
       data-reveal="left"
       style={{ "--i": i % 4 } as React.CSSProperties}
     >
       <span
         aria-hidden="true"
-        className="absolute top-6 left-[5px] h-[13px] w-[13px] rotate-45 border-2 border-accent bg-bg"
+        className="absolute top-2 left-[5px] h-[13px] w-[13px] rotate-45 border-2 border-accent bg-bg"
       />
-      <div className="panel flex flex-col gap-2 rounded-sm p-5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
+      <div className="flex flex-col gap-2 border-b border-dashed border-rule-strong pt-1 pb-6 sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
         <div>
           <h3 className="text-lg font-semibold text-ink">{title}</h3>
           <p className="mt-1 max-w-[60ch] text-[0.95rem] text-ink-muted">{sub}</p>
@@ -112,24 +113,23 @@ export default function AboutPage() {
 
         <div className="order-first md:order-none" data-depth>
           <div data-reveal="right">
-            <div className="tilt-media relative mx-auto w-48 md:w-full">
+            <div className="tilt-media relative mx-auto w-52 md:w-full">
               <Gear
                 teeth={16}
                 turns={3}
-                className="absolute -top-8 -right-8 h-24 w-24 text-accent opacity-40"
+                className="absolute -top-2 -right-2 h-16 w-16 text-accent opacity-40"
               />
-              <div className="panel brackets relative overflow-hidden rounded-sm p-2">
+              <Orbit>
                 <Image
                   src="/mine.jpg"
                   alt={profile.name}
                   width={544}
                   height={544}
-                  sizes="(min-width: 768px) 272px, 192px"
+                  sizes="(min-width: 768px) 272px, 208px"
                   loading="eager"
-                  className="w-full rounded-[2px] object-cover"
+                  className="h-full w-full object-cover"
                 />
-                <div className="scanline" />
-              </div>
+              </Orbit>
               <div className="mt-3 flex items-center justify-between">
                 <p className="label text-ink-faint">{profile.location}</p>
                 <p className="label flex items-center gap-1.5 text-signal">
@@ -197,24 +197,33 @@ export default function AboutPage() {
       </Section>
 
       <Section index={5} code="commendations" title="Recognition" meta={`${awards.length} flags`}>
-        <ul className="grid gap-4 sm:grid-cols-2">
+        <ul className="grid gap-x-10 gap-y-10 sm:grid-cols-2">
           {awards.map((award, i) => (
             <li
               key={award.title}
               data-reveal="flip"
               style={{ "--i": i % 2 } as React.CSSProperties}
-              className="card-3d panel brackets flex h-full flex-col rounded-sm p-5"
+              className="flex items-center gap-5"
             >
-              <div className="flex items-center justify-between">
-                <span className="font-label text-sm font-semibold text-accent">
-                  #{String(i + 1).padStart(2, "0")}
+              <Hexagon
+                className="h-[4.4rem] w-20 shrink-0"
+                tone={i % 2 ? "signal" : "accent"}
+              >
+                <span
+                  className={`font-label text-lg leading-none font-semibold ${
+                    i % 2 ? "text-signal" : "text-accent"
+                  }`}
+                >
+                  {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="label text-ink-faint">{award.year}</span>
+              </Hexagon>
+              <div>
+                <p className="label text-ink-faint">{award.year}</p>
+                <h3 className="mt-1 text-[1.05rem] leading-snug font-semibold text-ink">
+                  {award.title}
+                </h3>
+                <p className="mt-1 text-[0.92rem] text-ink-muted">{award.event}</p>
               </div>
-              <h3 className="mt-3 text-[1.05rem] leading-snug font-semibold text-ink">
-                {award.title}
-              </h3>
-              <p className="mt-2 text-[0.92rem] text-ink-muted">{award.event}</p>
             </li>
           ))}
         </ul>

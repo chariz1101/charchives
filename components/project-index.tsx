@@ -62,9 +62,9 @@ export default function ProjectIndex({
                   <div className="mt-5">
                     <StackList stack={project.stack} />
                   </div>
-                  <p className="label mt-6 inline-flex items-center gap-2 text-signal">
+                  <p className="label mt-6 inline-flex items-center gap-3 text-signal">
+                    <span className="cue-line" />
                     Open case file
-                    <span className="transition-transform group-hover:translate-x-1.5">→</span>
                   </p>
                 </div>
               </Link>
@@ -76,33 +76,33 @@ export default function ProjectIndex({
   }
 
   return (
-    <ol className="grid gap-6 md:grid-cols-2">
+    <ol className="grid gap-x-10 gap-y-16 md:grid-cols-2">
       {projects.map((project, i) => (
         <li
           key={project.slug}
           data-reveal={i % 2 === 0 ? "left" : "right"}
           style={{ "--i": i % 2 } as React.CSSProperties}
         >
-          <Link
-            href={`/projects/${project.slug}`}
-            className="card-3d panel group flex h-full flex-col rounded-sm p-4 hover:border-accent-line sm:p-5"
-          >
-            <MediaFrame
-              image={project.image}
-              alt={`${project.name} screenshot`}
-              label={project.name}
-              sizes="(min-width: 1152px) 520px, (min-width: 768px) 45vw, 100vw"
-            />
-            <div className="mt-5 flex items-baseline justify-between gap-4">
+          <Link href={`/projects/${project.slug}`} className="group flex h-full flex-col">
+            <div className="lift">
+              <MediaFrame
+                image={project.image}
+                alt={`${project.name} screenshot`}
+                label={project.name}
+                sizes="(min-width: 1152px) 540px, (min-width: 768px) 45vw, 100vw"
+              />
+            </div>
+            <div className="mt-6 flex items-center gap-3">
               <span className="font-label text-sm font-semibold text-accent">
                 {num(i)}
               </span>
+              <span className="h-px flex-1 bg-rule-strong" />
               <span className="label text-right text-ink-faint">{project.kind}</span>
             </div>
-            <h3 className="mt-2 text-2xl font-bold text-ink transition-colors group-hover:text-accent-strong">
+            <h3 className="mt-3 text-2xl font-bold text-ink transition-colors group-hover:text-accent-strong">
               {project.name}
             </h3>
-            <p className="mt-2 flex-1 text-[0.92rem] leading-relaxed text-ink-muted">
+            <p className="mt-2 flex-1 text-[0.95rem] leading-relaxed text-ink-muted">
               {project.summary}
             </p>
             <div className="mt-5">

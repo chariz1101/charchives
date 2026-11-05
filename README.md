@@ -67,6 +67,8 @@ app/
   organising/[slug]/      one case file per event, prerendered
   about/page.tsx          bio, experience, education, skills, leadership, awards
   globals.css             colour and type tokens, and every motion rule
+  icon.svg, favicon.ico,  the gear tab icon; favicon.ico and apple-icon.png
+  apple-icon.png          are rendered from icon.svg
 components/
   fx/scroll-fx.tsx        the one scroll engine (see Motion below)
   fx/robot-arm.tsx        the three.js robotic arm behind the home page
@@ -75,7 +77,8 @@ components/
   fx/hud.tsx              the Z-axis scroll gauge on wide screens
   case-file.tsx           shared detail page for projects and events
   system-stack.tsx        skills as an exploding stack of circuit plates
-  media-frame.tsx         screenshot frame, or a schematic plate when no image
+  media-frame.tsx         chamfered screenshot plate, or a schematic when no image
+  shapes.tsx              dial gauges, hexagon badges, radar, portrait orbit
   ...                     nav, footer, section header, project and activity index
 content/                  projects.ts, organising.ts, profile.ts
 public/projects/          project screenshots
@@ -84,8 +87,10 @@ public/organising/        event photos
 
 ## Design
 
-A robotics and mechatronics control room: graphite panels on a blueprint
-grid, servo orange (`--accent`) for anything that moves or can be clicked,
+A robotics and mechatronics control room on a blueprint grid. Content sits
+on rails, dials, hexagons and cut-corner plates rather than boxed cards, and
+links use a short extending line instead of arrows.
+Colours: servo orange (`--accent`) for anything that moves or can be clicked,
 sensor cyan (`--signal`) for readouts. Space Grotesk for text and Poppins
 for labels, both self-hosted through `next/font`.
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import MediaFrame from "@/components/media-frame";
+import { Hexagon } from "@/components/shapes";
 import StackList from "@/components/stack-list";
 
 type Block =
@@ -8,8 +9,8 @@ type Block =
 
 /**
  * The detail page shared by projects and organising entries: a spec-sheet
- * header, the media tilting in 3D, numbered work steps that assemble one by
- * one, and a spec panel alongside.
+ *  header, the media tilting in 3D, numbered work steps that assemble one by
+ * one, and a spec sheet alongside.
  */
 export default function CaseFile({
   back,
@@ -45,9 +46,10 @@ export default function CaseFile({
       <p className="pb-10">
         <Link
           href={back.href}
-          className="label inline-flex items-center gap-2 text-ink-faint transition hover:text-accent"
+          className="group label inline-flex items-center gap-3 text-ink-faint transition hover:text-accent"
         >
-          ← {back.label}
+          <span className="h-1.5 w-1.5 rotate-45 bg-accent" />
+          Back to {back.label}
         </Link>
       </p>
 
@@ -105,18 +107,23 @@ export default function CaseFile({
                   {block.text}
                 </p>
               ) : (
-                <ol className="mt-4 max-w-[66ch] space-y-3">
+                // A step flow: numbered circles joined by a line.
+                <ol className="relative mt-6 max-w-[66ch]">
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-4 bottom-4 left-[15px] w-px bg-gradient-to-b from-accent via-rule-strong to-transparent"
+                  />
                   {block.list.map((item, i) => (
                     <li
                       key={item}
                       data-reveal="left"
                       style={{ "--i": i } as React.CSSProperties}
-                      className="panel flex gap-4 rounded-sm p-4"
+                      className="relative flex gap-5 pb-6 last:pb-0"
                     >
-                      <span className="font-label text-sm font-semibold text-accent">
+                      <span className="relative flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-accent bg-bg font-label text-[11px] font-semibold text-accent">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="text-[0.96rem] leading-relaxed text-ink-muted">
+                      <span className="pt-1 text-[0.98rem] leading-relaxed text-ink-muted">
                         {item}
                       </span>
                     </li>
@@ -128,10 +135,13 @@ export default function CaseFile({
         </div>
 
         <aside
-          className="panel brackets space-y-7 rounded-sm p-5 md:sticky md:top-24"
+          className="space-y-7 border-l border-rule-strong pl-6 md:sticky md:top-24"
           data-reveal="right"
         >
-          <p className="label text-ink-faint">Spec sheet</p>
+          <div className="label flex items-center gap-2.5 text-ink-faint">
+            <Hexagon className="h-4 w-[18px]" />
+            Spec sheet
+          </div>
           <dl className="space-y-4">
             {specs.map((spec) => (
               <div key={spec.label}>
@@ -158,9 +168,9 @@ export default function CaseFile({
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="label rounded-sm border border-accent-line bg-accent-soft px-3 py-2.5 text-center text-accent-strong transition hover:bg-accent hover:text-bg"
+                  className="chamfer label bg-accent-soft px-3 py-2.5 text-center text-accent-strong transition [--cut:8px] hover:bg-accent hover:text-bg"
                 >
-                  {link.label} ↗
+                  {link.label}
                 </a>
               ))}
             </div>
@@ -171,7 +181,10 @@ export default function CaseFile({
       {next ? (
         <nav className="border-t border-rule pt-8" data-reveal>
           <Link href={next.href} className="group block">
-            <span className="label text-ink-faint">{next.label} →</span>
+            <span className="label flex items-center gap-3 text-ink-faint">
+              {next.label}
+              <span className="cue-line text-accent" />
+            </span>
             <span className="mt-2 block text-3xl font-bold text-ink transition-colors group-hover:text-accent sm:text-4xl">
               {next.name}
             </span>

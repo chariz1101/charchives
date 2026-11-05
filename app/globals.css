@@ -89,31 +89,16 @@
   text-transform: uppercase;
 }
 
-/* A panel with machined corner brackets. */
-@utility panel {
-  position: relative;
-  background: linear-gradient(180deg, rgb(17 25 35 / 0.82), rgb(12 17 23 / 0.82));
-  border: 1px solid var(--rule);
-  backdrop-filter: blur(6px);
-}
-
-@utility brackets {
-  background-image:
-    linear-gradient(var(--accent), var(--accent)),
-    linear-gradient(var(--accent), var(--accent)),
-    linear-gradient(var(--accent), var(--accent)),
-    linear-gradient(var(--accent), var(--accent)),
-    linear-gradient(var(--accent), var(--accent)),
-    linear-gradient(var(--accent), var(--accent)),
-    linear-gradient(var(--accent), var(--accent)),
-    linear-gradient(var(--accent), var(--accent));
-  background-repeat: no-repeat;
-  background-size:
-    14px 2px, 2px 14px, 14px 2px, 2px 14px,
-    14px 2px, 2px 14px, 14px 2px, 2px 14px;
-  background-position:
-    top left, top left, top right, top right,
-    bottom left, bottom left, bottom right, bottom right;
+/* A plate with two corners cut off, like a machined part. */
+@utility chamfer {
+  clip-path: polygon(
+    var(--cut, 18px) 0,
+    100% 0,
+    100% calc(100% - var(--cut, 18px)),
+    calc(100% - var(--cut, 18px)) 100%,
+    0 100%,
+    0 var(--cut, 18px)
+  );
 }
 
 /* ------------------------------------------------------------ background
@@ -268,15 +253,66 @@
   }
 }
 
-.card-3d {
-  transform-style: preserve-3d;
-  transition:
-    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
-    border-color 0.3s;
+/* Media lifts and tilts toward the pointer side on hover. */
+.lift {
+  transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.card-3d:hover {
-  transform: perspective(1000px) rotateX(4deg) rotateY(-4deg) translateZ(10px);
+.group:hover .lift {
+  transform: perspective(1000px) rotateX(5deg) rotateY(-6deg) translateZ(16px);
+}
+
+/* Dial arcs sweep in on reveal. --frac is set per dial. */
+.dial-arc {
+  stroke-dasharray: var(--frac) 1;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.6, 0, 0.2, 1) 0.2s;
+}
+
+.fx .dial:not([data-in]) .dial-arc {
+  stroke-dashoffset: var(--frac);
+}
+
+/* A short line that extends on hover, used in place of arrows. */
+.cue-line {
+  display: inline-block;
+  height: 1px;
+  width: 1.5rem;
+  background: currentColor;
+  transition: width 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.group:hover .cue-line {
+  width: 3rem;
+}
+
+.orbit-spin {
+  animation: spin 24s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.radar-sweep {
+  background: conic-gradient(from 0deg, rgb(56 214 255 / 0.28), transparent 70deg);
+  animation: spin 4s linear infinite;
+}
+
+.radar-blip {
+  animation: blip 2.8s ease-out infinite;
+}
+
+@keyframes blip {
+  0%,
+  100% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -298,14 +334,21 @@
   .tilt-media,
   .parallax,
   .gear-spin,
-  .card-3d:hover {
+  .group:hover .lift {
     transform: none;
     rotate: none;
   }
 
+  .fx .dial:not([data-in]) .dial-arc {
+    stroke-dashoffset: 0;
+  }
+
   .scanline,
   .blink,
-  .pulse-dot {
+  .pulse-dot,
+  .orbit-spin,
+  .radar-sweep,
+  .radar-blip {
     animation: none;
   }
 }

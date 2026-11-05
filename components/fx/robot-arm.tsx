@@ -286,7 +286,10 @@ export default function RobotArm() {
 
       // Step back once the hero is gone so text in front stays readable.
       const hero = Math.min(window.scrollY / window.innerHeight, 1);
-      el.style.opacity = String(wide ? 1 - hero * 0.72 : 0.4 - hero * 0.22);
+      // And bow out near the end, where the contact radar takes over.
+      const tail = smooth(Math.min(Math.max((s - 0.84) / 0.14, 0), 1));
+      const base = wide ? 1 - hero * 0.72 : 0.4 - hero * 0.22;
+      el.style.opacity = String(base * (1 - tail * 0.9));
 
       renderer.render(scene, camera);
     };

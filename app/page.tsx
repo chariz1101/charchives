@@ -4,6 +4,7 @@ import ActivityIndex from "@/components/activity-index";
 import RobotArm from "@/components/fx/robot-arm";
 import ProjectIndex from "@/components/project-index";
 import Section from "@/components/section";
+import { Dial, Orbit, Radar } from "@/components/shapes";
 import SystemStack from "@/components/system-stack";
 import { activities, featuredActivities } from "@/content/organising";
 import {
@@ -66,7 +67,7 @@ export default function HomePage() {
               data-reveal
               style={{ "--i": 1 } as React.CSSProperties}
             >
-              <span className="text-accent">&gt;</span> {profile.role.toLowerCase()}{" "}
+              <span className="mr-1 inline-block h-1.5 w-1.5 -translate-y-0.5 rotate-45 bg-accent" /> {profile.role.toLowerCase()}{" "}
               <span className="text-ink-faint">{"//"}</span> robotics & mechatronics{" "}
               <span className="text-ink-faint">{"//"}</span> {profile.location}
             </p>
@@ -80,11 +81,11 @@ export default function HomePage() {
             </p>
 
             <div
-              className="panel brackets mt-8 flex max-w-md items-center gap-4 rounded-sm p-3 pr-5"
+              className="mt-8 flex max-w-md items-center gap-4"
               data-reveal
               style={{ "--i": 3 } as React.CSSProperties}
             >
-              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-sm">
+              <Orbit className="w-20 shrink-0">
                 <Image
                   src="/mine.jpg"
                   alt={profile.name}
@@ -94,8 +95,7 @@ export default function HomePage() {
                   sizes="64px"
                   className="h-full w-full object-cover"
                 />
-                <div className="scanline" />
-              </div>
+              </Orbit>
               <div className="min-w-0">
                 <p className="label text-ink-faint">Operator status · active</p>
                 <p className="mt-1 text-[0.9rem] leading-snug text-ink-muted">
@@ -113,7 +113,7 @@ export default function HomePage() {
             >
               <a
                 href={`mailto:${links.email}`}
-                className="rounded-sm bg-accent px-5 py-2.5 font-label text-[13px] font-semibold tracking-wide text-bg uppercase transition hover:bg-accent-strong hover:shadow-[0_0_30px_rgb(255_122_26/0.45)]"
+                className="chamfer bg-accent px-5 py-2.5 [--cut:10px] font-label text-[13px] font-semibold tracking-wide text-bg uppercase transition hover:bg-accent-strong hover:shadow-[0_0_30px_rgb(255_122_26/0.45)]"
               >
                 Send a signal
               </a>
@@ -129,7 +129,7 @@ export default function HomePage() {
                 rel="noreferrer"
                 className="rounded-sm border border-rule-strong bg-panel/70 px-5 py-2.5 font-label text-[13px] tracking-wide text-ink uppercase transition hover:border-signal hover:text-signal"
               >
-                Résumé ↗
+                Résumé
               </a>
               <a
                 href={links.github}
@@ -137,7 +137,7 @@ export default function HomePage() {
                 rel="noreferrer"
                 className="rounded-sm border border-rule-strong bg-panel/70 px-5 py-2.5 font-label text-[13px] tracking-wide text-ink uppercase transition hover:border-signal hover:text-signal"
               >
-                GitHub ↗
+                GitHub
               </a>
             </div>
           </div>
@@ -156,24 +156,10 @@ export default function HomePage() {
 
         {/* -------------------------------------------------- telemetry */}
         <section id="telemetry" className="scroll-mt-24 pt-10">
-          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+          <ul className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
             {telemetry.map((item, i) => (
-              <li
-                key={item.label}
-                data-reveal="zoom"
-                style={{ "--i": i } as React.CSSProperties}
-                className="panel brackets rounded-sm p-4 last:col-span-2 sm:last:col-span-1"
-              >
-                <p className="label text-ink-faint">{item.label}</p>
-                <p className="mt-3 flex items-baseline gap-2">
-                  <span
-                    className="font-label text-4xl font-semibold text-ink tabular-nums"
-                    data-count={item.value}
-                  >
-                    {String(item.value).padStart(2, "0")}
-                  </span>
-                  <span className="label text-signal">{item.unit}</span>
-                </p>
+              <li key={item.label} className="last:col-span-2 sm:last:col-span-1">
+                <Dial value={item.value} label={item.label} unit={item.unit} i={i} />
               </li>
             ))}
           </ul>
@@ -189,9 +175,10 @@ export default function HomePage() {
           <p className="pt-16" data-reveal>
             <Link
               href="/projects"
-              className="label inline-flex items-center gap-2 rounded-sm border border-signal-line px-4 py-2.5 text-signal transition hover:bg-signal hover:text-bg"
+              className="group label inline-flex items-center gap-3 text-signal transition hover:text-accent"
             >
-              {`All ${projects.length} projects →`}
+              <span className="cue-line" />
+              {`View all ${projects.length} projects`}
             </Link>
           </p>
         </Section>
@@ -215,49 +202,55 @@ export default function HomePage() {
           <p className="pt-10" data-reveal>
             <Link
               href="/organising"
-              className="label inline-flex items-center gap-2 rounded-sm border border-signal-line px-4 py-2.5 text-signal transition hover:bg-signal hover:text-bg"
+              className="group label inline-flex items-center gap-3 text-signal transition hover:text-accent"
             >
-              {`All ${activities.length} organising ${
+              <span className="cue-line" />
+              {`View all ${activities.length} organising ${
                 activities.length === 1 ? "entry" : "entries"
-              } →`}
+              }`}
             </Link>
           </p>
         </Section>
 
         <Section index={4} id="contact" code="open channel" title="Get in touch" meta={profile.location}>
-          <div className="panel brackets relative overflow-hidden rounded-sm p-6 sm:p-10" data-reveal="zoom">
-            <div className="scanline" />
-            <p className="label text-signal">Transmit on</p>
-            <p className="mt-2 max-w-[58ch] text-[0.98rem] leading-relaxed text-ink-muted">
-              Email is the surest way to reach me.
-            </p>
-            <p className="mt-6">
-              <a
-                href={`mailto:${links.email}`}
-                className="text-2xl font-bold break-all text-accent underline decoration-accent-line decoration-2 underline-offset-[8px] transition hover:text-accent-strong hover:decoration-accent sm:text-4xl"
-              >
-                {links.email}
-              </a>
-            </p>
-            <ul className="mt-10 flex flex-wrap gap-3">
-              {[
-                { label: "LinkedIn", href: links.linkedin },
-                { label: "GitHub", href: links.github },
-                { label: "Résumé", href: links.resume },
-                { label: links.phone, href: links.phoneHref },
-              ].map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    target={link.href.startsWith("http") ? "_blank" : undefined}
-                    rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                    className="inline-block rounded-sm border border-rule-strong px-4 py-2 font-label text-[12px] tracking-wide text-ink-muted transition hover:border-signal hover:text-signal"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+          <div className="grid items-center gap-10 md:grid-cols-[1fr_16rem]">
+            <div data-reveal>
+              <p className="label text-signal">Transmit on</p>
+              <p className="mt-2 max-w-[58ch] text-[0.98rem] leading-relaxed text-ink-muted">
+                Email is the surest way to reach me.
+              </p>
+              <p className="mt-6">
+                <a
+                  href={`mailto:${links.email}`}
+                  className="text-2xl font-bold break-all text-accent underline decoration-accent-line decoration-2 underline-offset-[8px] transition hover:text-accent-strong hover:decoration-accent sm:text-4xl"
+                >
+                  {links.email}
+                </a>
+              </p>
+              <ul className="mt-10 flex flex-wrap gap-x-7 gap-y-3">
+                {[
+                  { label: "LinkedIn", href: links.linkedin },
+                  { label: "GitHub", href: links.github },
+                  { label: "Résumé", href: links.resume },
+                  { label: links.phone, href: links.phoneHref },
+                ].map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      target={link.href.startsWith("http") ? "_blank" : undefined}
+                      rel={link.href.startsWith("http") ? "noreferrer" : undefined}
+                      className="inline-flex items-center gap-2 font-label text-[13px] tracking-wide text-ink-muted transition hover:text-signal"
+                    >
+                      <span className="h-1.5 w-1.5 rounded-full bg-signal" />
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div data-reveal="zoom" className="mx-auto w-48 md:w-full">
+              <Radar />
+            </div>
           </div>
         </Section>
       </div>
